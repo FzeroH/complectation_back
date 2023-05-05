@@ -1,13 +1,23 @@
 import pandas as pd
 import json
 
-def parser(path_to_excel_file):
-    # загружаем данные из Excel файла в DataFrame
-    df = pd.read_excel(path_to_excel_file, header=10)
+
+def parser(filename: str, filepath: str):
+    header_dict = {
+        "Инфра-инженерия": 10,
+        "ТНТ": 5,
+        "АСВ": 3,
+        "Кнорус": 5,
+        "Питер": 6,
+        "Лаборатория знаний": 4,
+        "Проспект": 11
+    }
+    header = header_dict.get(filename)
+    df = pd.read_excel(f"{filepath}", header=header)
+
     # Нумерация с 0, поэтому брать расположение названий столбцов на строку меньше, чем в xls/xlsx файле
     # ТНТ 5, Кнорус 5, Питер 6, Лаборатория знаний 4,Проспект новый 11, АСВ 3, ИнфраИнж 10
-    # создаем словарь с ключами, соответствующими ожидаемым названиям столбцов,
-    # и значениями, соответствующими возможным названиям столбцов в файле Excel
+
     column_map = {'publication_author': ['Автор', 'Автор(ы)'],
                   'publication_name': ['Название', 'Наименование'],
                   'publication_year': ['Год издания', 'Год'],
@@ -29,5 +39,4 @@ def parser(path_to_excel_file):
 
     json_obj = df.to_json(orient='records', force_ascii=False)
     json_data = json.loads(json_obj)
-    print(f'{json_data[1]["publication_author"]} {json_data[1]["publication_cost"]}')
     return json_data
