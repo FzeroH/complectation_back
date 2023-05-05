@@ -1,10 +1,6 @@
 import pandas as pd
 import json
 
-# указываем путь к файлу Excel
-#path_to_excel_file = "/home/alex/IdeaProjects/complectation_back/parser_service/price Инфра-инженерия.xlsx"
-
-
 def parser(path_to_excel_file):
     # загружаем данные из Excel файла в DataFrame
     df = pd.read_excel(path_to_excel_file, header=10)
