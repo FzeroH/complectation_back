@@ -1,5 +1,6 @@
 import pandas as pd
 import json
+from db_connect import connect
 
 
 def parser(filename: str, filepath: str):
@@ -16,7 +17,6 @@ def parser(filename: str, filepath: str):
     df = pd.read_excel(f"{filepath}", header=header)
 
     # Нумерация с 0, поэтому брать расположение названий столбцов на строку меньше, чем в xls/xlsx файле
-    # ТНТ 5, Кнорус 5, Питер 6, Лаборатория знаний 4,Проспект новый 11, АСВ 3, ИнфраИнж 10
 
     column_map = {'publication_author': ['Автор', 'Автор(ы)'],
                   'publication_name': ['Название', 'Наименование'],
@@ -39,4 +39,9 @@ def parser(filename: str, filepath: str):
 
     json_obj = df.to_json(orient='records', force_ascii=False)
     json_data = json.loads(json_obj)
+    with connect.cursor() as curs:
+        for data in json_data:
+            data['publication_year'] = int(data['publication_year'])
+            insert_query = f"INSERT INTO mytable (publication_author, publication_name, publication_year, publication_cost) VALUES ('{data['publication_author']}', '{data['publication_name']}', {data['publication_year']}, {data['publication_cost']})"
+            curs.execute(insert_query)
     return json_data
