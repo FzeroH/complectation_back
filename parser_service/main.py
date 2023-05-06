@@ -24,9 +24,8 @@ async def create_upload_file(file: UploadFile = File(...), publisher: str = Form
     contents = await file.read()
     with open(file_path, 'wb') as f:
         f.write(contents)
-
     try:
-        pd.read_excel(file_path, engine='xlrd')
+        pd.read_excel(file_path)
     except:
         return JSONResponse(content={"error": "Недопустимый файл."}, status_code=400)
 
