@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Добавил psycopg2 для взаимодействия с postgresql">
-      <change afterPath="$PROJECT_DIR$/admin_service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth_service/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/auth_service/controllers/authController.js" afterDir="false" />
-    </list>
+    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Добавил роуты для взаимодействия админа с пользователями" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,7 +93,7 @@
       <workItem from="1683286745396" duration="1368000" />
       <workItem from="1683288203239" duration="9404000" />
       <workItem from="1683303957477" duration="9640000" />
-      <workItem from="1683360674827" duration="9987000" />
+      <workItem from="1683360674827" duration="10316000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1683287530706</created>
@@ -212,7 +207,28 @@
       <option name="project" value="LOCAL" />
       <updated>1683366241043</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Добавил добавил новый модуль">
+      <created>1683371524152</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1683371524152</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Подправил названия переменных. Убрал генерацию токена при регистрации">
+      <created>1683371578063</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1683371578063</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Добавил роуты для взаимодействия админа с пользователями">
+      <created>1683371651293</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1683371651293</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,7 +261,10 @@
     <MESSAGE value="Добавил загрузку информации в базу данных" />
     <MESSAGE value="Добавил подключение базы данных" />
     <MESSAGE value="Добавил psycopg2 для взаимодействия с postgresql" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил psycopg2 для взаимодействия с postgresql" />
+    <MESSAGE value="Добавил добавил новый модуль" />
+    <MESSAGE value="Подправил названия переменных. Убрал генерацию токена при регистрации" />
+    <MESSAGE value="Добавил роуты для взаимодействия админа с пользователями" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил роуты для взаимодействия админа с пользователями" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/complectation_back$parser_service.coverage" NAME="parser_service Coverage Results" MODIFIED="1683360761986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
