@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 // Routes
-const authRoutes = require('./routes/admin')
+const adminRoutes = require('./routes/admin')
 
 // view engine setup
 app.set('view engine', 'pug');
@@ -20,6 +20,6 @@ app.use(cors({ origin: '*' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('/api/auth',authRoutes)
+app.use('/api/admin',adminRoutes)
 
 module.exports = app;

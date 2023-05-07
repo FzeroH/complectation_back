@@ -52,14 +52,3 @@ module.exports.registration =  async function (req, res) {
         res.status(500).json({ error: 'Произошла ошибка' });
     }
 };
-
-module.exports.getUserData = async function (req, res){
-    const { users_id } = req.body
-    const result = await db.one('SELECT * FROM user WHERE users_id = $1', [users_id])
-    return res.status(200).json({
-        users_id: result.users_id,
-        users_first_name: result.users_id,
-        users_last_name: result.users_id,
-        users_role: result.users_role,
-    })
-};
