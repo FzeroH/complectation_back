@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const controller = require('../controllers/adminController')
-const { authenticateToken } = require('../middleware/authenticateToken')
+const { authenticateAdminToken } = require('../middleware/authenticateToken')
 
-router.get('/get_users', authenticateToken , controller.getUsers)
+router.get('/get_users', authenticateAdminToken , controller.getUsers)
 
-router.post('/update_user', authenticateToken, controller.updateUser);
+router.post('/update_user', authenticateAdminToken, controller.updateUser);
 
 
 module.exports = router
