@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const jwt = require('jsonwebtoken');
 const controller = require('../controllers/adminController')
 const { authenticateAdminToken } = require('../middleware/authenticateToken')
 
