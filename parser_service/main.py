@@ -6,6 +6,7 @@ import pandas as pd
 
 from verifyToken import verify_token
 from parser import parser
+from db_connect import connect
 
 app = FastAPI()
 security = HTTPBearer()
@@ -17,28 +18,34 @@ async def create_upload_file(
         publisher: str = Form(...),
         credentials: HTTPAuthorizationCredentials = Depends(security)):
     try:
-        payload = verify_token(credentials.credentials)
-        user_id = await payload.get("userId")
+        payload = verify_token(credentials)
+        user_id = await payload
+        with connect.cursor() as curs:
+            select_role_name = f"SELECT users_id, users.role_id FROM users JOIN role ON users.role_id = role.role_id WHERE users_id = {user_id}"
+            curs.execute(select_role_name)
+            role = curs.fetchone()
     except Exception as e:
-        raise HTTPException(status_code=401, detail="Токен недействителен или истекло время действия токена.")
+        raise HTTPException(status_code=401, detail=f"{e}")
+    if role[1] == 3:
+        if not file.filename.lower().endswith(('.xls', '.xlsx')):
+            return JSONResponse(content={"error": "Неверный формат файла."}, status_code=400)
 
-    if not file.filename.lower().endswith(('.xls', '.xlsx')):
-        return JSONResponse(content={"error": "Неверный формат файла."}, status_code=400)
+        # сохраняем загруженный файл с заданным именем
+        file_type = f"{os.path.splitext(file.filename)[1]}"
+        file_path = f"{publisher}{file_type}"
 
-    # сохраняем загруженный файл с заданным именем
-    file_type = f"{os.path.splitext(file.filename)[1]}"
-    file_path = f"{publisher}{file_type}"
+        contents = await file.read()
+        with open(file_path, 'wb') as f:
+            f.write(contents)
+        try:
+            pd.read_excel(file_path)
+        except:
+            return JSONResponse(content={"error": "Недопустимый файл."}, status_code=400)
 
-    contents = await file.read()
-    with open(file_path, 'wb') as f:
-        f.write(contents)
-    try:
-        pd.read_excel(file_path)
-    except:
-        return JSONResponse(content={"error": "Недопустимый файл."}, status_code=400)
+        t = parser(publisher, file_path)
 
-    t = parser(publisher, file_path)
+        os.remove(file_path)
 
-    os.remove(file_path)
-
-    return {"filename": file.filename, "publisher": publisher, "test": t}
+        return JSONResponse(content={"message": "Успешно"}, status_code=200)
+    else:
+        return JSONResponse(content={"error": "У Вас нет права загрузки файла"}, status_code=403)
