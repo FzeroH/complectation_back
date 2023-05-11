@@ -8,6 +8,7 @@ const app = express();
 
 // Routes
 const authRoutes = require('./routes/auth')
+const adminRoutes = require('./routes/admin')
 
 // view engine setup
 app.set('view engine', 'pug');
@@ -21,5 +22,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/api/auth',authRoutes)
+app.use('/api/admin',adminRoutes)
 
 module.exports = app;

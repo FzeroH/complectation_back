@@ -18,7 +18,7 @@ module.exports.login = async function (req, res){
             return res.status(401).json({ error: 'Неверный email или пароль(точно пароль)' });
         }
 
-        const token = jwt.sign({ userId: user.users_id }, process.env.JWT_SECRET, { expiresIn: '1h' }, { algorithm: 'HS256' });
+        const token = jwt.sign({ userId: user.users_id }, process.env.JWT_SECRET, { expiresIn: '1d' }, { algorithm: 'HS256' });
 
         res.json({ token });
     } catch (error) {

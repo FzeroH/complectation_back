@@ -4,11 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Добавил проверку необходимости обновления токена">
+    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Добавил проверку роли пользователя">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser_service/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser_service/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser_service/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser_service/parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser_service/verifyToken.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser_service/verifyToken.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_service/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_service/bin/www.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/bin/www.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_service/configs/postgresConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/configs/postgresConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_service/controllers/adminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/adminController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_service/middleware/authenticateAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/middleware/authenticateAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_service/middleware/authenticateToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/middleware/authenticateToken.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_service/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_service/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_service/routes/admin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth_service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/main_service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth_service/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth_service/bin/www.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth_service/configs/postgresConfig.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth_service/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/authController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth_service/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth_service/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth_service/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/routes/auth.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +45,6 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
-  </component>
-  <component name="PackageJsonUpdateNotifier">
-    <dismissed value="$PROJECT_DIR$/admin_service/package.json" />
   </component>
   <component name="ProjectId" id="2PN9b3FZEKcN0omzKZLrRIkpkhq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -68,6 +80,8 @@
       <recent name="$PROJECT_DIR$/auth_service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/main_service" />
+      <recent name="$PROJECT_DIR$/main_service/controllers" />
       <recent name="$PROJECT_DIR$/parser_service/priselist" />
     </key>
   </component>
@@ -101,7 +115,8 @@
       <workItem from="1683360674827" duration="13060000" />
       <workItem from="1683449597435" duration="18275000" />
       <workItem from="1683634504642" duration="14298000" />
-      <workItem from="1683649073589" duration="7138000" />
+      <workItem from="1683649073589" duration="7664000" />
+      <workItem from="1683803900637" duration="887000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1683287530706</created>
@@ -362,7 +377,28 @@
       <option name="project" value="LOCAL" />
       <updated>1683651414294</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Добавил опции для функции декодирования">
+      <created>1683656522419</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1683656522419</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Добавил рабочую версию кода отправки данных в бд">
+      <created>1683656610168</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1683656610168</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Добавил проверку роли пользователя">
+      <created>1683656638609</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1683656638609</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,9 +416,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Убрал xlrd" />
-    <MESSAGE value="Добавил загрузку информации в базу данных" />
-    <MESSAGE value="Добавил подключение базы данных" />
     <MESSAGE value="Добавил psycopg2 для взаимодействия с postgresql" />
     <MESSAGE value="Добавил добавил новый модуль" />
     <MESSAGE value="Подправил названия переменных. Убрал генерацию токена при регистрации" />
@@ -405,7 +438,10 @@
     <MESSAGE value="Явно указал используемый алгоритм" />
     <MESSAGE value="Добавил функцию проверки роли администратора у пользователя" />
     <MESSAGE value="Добавил проверку необходимости обновления токена" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил проверку необходимости обновления токена" />
+    <MESSAGE value="Добавил опции для функции декодирования" />
+    <MESSAGE value="Добавил рабочую версию кода отправки данных в бд" />
+    <MESSAGE value="Добавил проверку роли пользователя" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил проверку роли пользователя" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/complectation_back$parser_service.coverage" NAME="parser_service Coverage Results" MODIFIED="1683653070422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
