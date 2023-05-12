@@ -1,7 +1,7 @@
 import pandas as pd
 import json
 from db_connect import connect
-from fastapi.responses import JSONResponse
+import re
 
 
 def parser(filename: str, filepath: str):
@@ -22,7 +22,7 @@ def parser(filename: str, filepath: str):
     column_map = {'publication_author': ['Автор', 'Автор(ы)'],
                   'publication_title': ['Название', 'Наименование'],
                   'publication_year': ['Год издания', 'Год'],
-                  'publication_cost': ['Цена', 'Цена (руб.)', 'Цена с НДС', 'Цена в рублях']}
+                  'publication_cost': ['Цена', 'Цена (руб.)', 'Цена с НДС', 'Цена в рублях', 'цена']}
 
     # выбираем только столбцы, которые соответствуют ключам словаря column_map
     columns_to_keep = []
@@ -40,35 +40,45 @@ def parser(filename: str, filepath: str):
 
     json_obj = df.to_json(orient='records', force_ascii=False)
     json_data = json.loads(json_obj)
-    with connect.cursor() as curs:
-        insert_query = "INSERT INTO publication (company_id,publication_author, publication_title, publication_year, publication_cost) VALUES (%s, %s, %s, %s, %s)"
-    for data in json_data:
-        try:
-            if data['publication_year'] is not None:
+    # return json_data
+    curs = connect.cursor()
+    insert_query = "INSERT INTO publication (company_id,publication_author, publication_title, publication_year, publication_cost) VALUES (%s, %s, %s, %s, %s)"
+    try:
+        for data in json_data:
+            if isinstance(data['publication_year'], str):
+                temp = re.search(r"\d{4}", data['publication_year'])
+                if temp:
+                    data['publication_year'] = temp.group()
+            if data['publication_year']:
                 data['publication_year'] = str(int(data['publication_year']))
-            if data['publication_cost'] is not None:
+
+            publication_cost_exceptions = ['готовится к изданию', 'ожидается переиздание', 'ожидается пееиздание',
+                                           'не для подажи', 'не для продажи', 'в электонном виде', 'в электронном виде']
+            if isinstance(data['publication_cost'], str) and data['publication_cost'].lower() in publication_cost_exceptions:
+                continue
+            if isinstance(data['publication_cost'], str) and 'р' in data['publication_cost']:
+                data['publication_cost'] = data['publication_cost'].replace('р', '').strip()
+            if isinstance(data['publication_cost'], str) and 'комплект' in data['publication_cost']:
+                data['publication_cost'] = data['publication_cost'].replace('комплект', '').strip()
+            if isinstance(data['publication_cost'], str) and ',' in data['publication_cost']:
+                data["publication_cost"] = float(data['publication_cost'].replace(',', '.'))
+            if data['publication_cost'] is not None and not isinstance(data['publication_cost'], str):
                 data['publication_cost'] = float(data['publication_cost'])
-            #TODO: Добавить проверки для каждого поля. Если None, изменить на null
-            values = (2, data['publication_author'], data['publication_title'], data['publication_year'], data['publication_cost'])
+
+            if not data['publication_author']:
+                data['publication_author'] = '-'
+
+            if not (data['publication_cost'] and data['publication_year']):
+                continue
+
+            if not data['publication_title']:
+                continue
+
+            values = (6, data['publication_author'], data['publication_title'], data['publication_year'], data['publication_cost'])
             curs.execute(insert_query, values)
-        except Exception as e:
-            print(f"Error processing data {data}: {e}")
-            continue
-    connect.commit()
+        connect.commit()
+        curs.close()
+    except Exception as e:
+        connect.rollback()
+        print(f"Error processing data: {e}")
 
-    return JSONResponse(content={"message": "Успешно"}, status_code=200)
-
-
-# try:
-    #     with connect.cursor() as curs:
-    #         for data in json_data:
-    #             if data['publication_year'] is not None:
-    #                 data['publication_year'] = str(int(data['publication_year']))
-    #             if data['publication_cost'] is not None:
-    #                 data['publication_cost'] = float(data['publication_cost'])
-    #             insert_query = f"INSERT INTO publication (company_id,publication_author, publication_title, publication_year, publication_cost) VALUES (1, '{data['publication_author']}', '{data['publication_title']}', {data['publication_year']}, {data['publication_cost']})"
-    #             curs.execute(insert_query)
-    #         curs.commit()
-    #     return JSONResponse(content={"message": "Успешно"}, status_code=200)
-    # except Exception as e:
-    #     return JSONResponse(content={"error": f"{e}"}, status_code=400)
