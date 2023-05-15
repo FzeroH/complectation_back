@@ -8,4 +8,6 @@ router.get('/get_users',authenticateToken, authenticateAdmin, controller.getUser
 
 router.post('/update_user',authenticateToken, authenticateAdmin,   controller.updateUser);
 
+router.post('/registration',authenticateToken, authenticateAdmin, controller.registration);
+
 module.exports = router
