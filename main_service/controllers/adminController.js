@@ -19,7 +19,7 @@ module.exports.updateUser =  async function (req, res) {
     }
 };
 
-// Функции просмотра списков
+
 module.exports.getUsers = async function (req, res){
     try {
         // Получаем список пользователей из базы данных
@@ -60,3 +60,155 @@ module.exports.registration =  async function (req, res) {
         res.status(500).json({ error: 'Произошла ошибка' });
     }
 };
+
+module.exports.addGroupType = async function (req, res) {
+    const { students_group_type_name } = req.body;
+    try {
+        await db.none('INSERT INTO students_group_type (students_group_type_name) VALUES ($1)',
+            [students_group_type_name]);
+        res.status(200).json({
+            message: 'Успешно'
+        });
+    } catch (e) {
+        res.status(500).json({
+            message: 'Ошибка'
+        });
+    }
+};
+
+module.exports.addStudentsGroup = async function (req, res){
+    const { cafedra_id, students_group_type_id, students_group_name, students_group_count } = req.body;
+    try {
+        await db.none('INSERT INTO students_group (cafedra_id, students_group_type_id, students_group_name, students_group_count) VALUES ($1, $2, $3, $4)',
+            [cafedra_id, students_group_type_id, students_group_name, students_group_count]);
+        res.status(200).json({
+            message: 'Успешно'
+        })
+    } catch (e) {
+        res.status(500).json({
+            message: 'Ошибка'
+        })
+    }
+}
+
+module.exports.addStudentsDiscipline = async function (req, res){
+    const { discipline_id, students_group_id, users_id } = req.body;
+    try {
+        db.none('INSERT INTO students_discipline (discipline_id, students_group_id, users_id) VALUES ($1, $2, $3)',
+            [discipline_id, students_group_id, users_id]);
+        res.status(200).json({
+            message: 'Успешно'
+        });
+    } catch (e) {
+        res.status(500).json({
+            message: 'Ошибка'
+        });
+    }
+}
+
+module.exports.addRole = async function (req, res){
+    const { role_name } = req.body;
+    try {
+        db.none('INSERT INTO role (role_name) VALUES ($1)',
+            [role_name]);
+        res.status(200).json({
+            message: 'Успешно'
+        });
+    } catch (e) {
+        res.status(500).json({
+            message: 'Ошибка'
+        });
+    }
+}
+
+module.exports.addRequestStatus = async function (req, res){
+    const { request_status_name } = req.body;
+    try {
+        await db.none('INSERT INTO request_status (request_status_name) VALUES ($1)',
+            [request_status_name]);
+        res.status(200).json({
+            message: 'Успешно'
+        });
+    } catch (e) {
+        res.status(500).json({
+            message: 'Ошибка'
+        });
+    }
+}
+
+module.exports.addPublicationType = async function (req, res){
+    const { pub_type_name } = req.body;
+    try {
+        await db.none('INSERT INTO publication_type (pub_type_name) VALUES ($1)',
+            [pub_type_name]);
+        res.status(200).json({
+            message: 'Успешно'
+        });
+    } catch (e) {
+        res.status(500).json({
+            message: 'Ошибка'
+        });
+    }
+}
+
+module.exports.addFaculty = async function (req, res){
+    const { faculty_name } = req.body;
+    try {
+        await db.none('INSERT INTO faculty (pub_type_name) VALUES ($1)',
+            [faculty_name]);
+        res.status(200).json({
+            message: 'Успешно'
+        });
+    } catch (e) {
+        res.status(500).json({
+            message: 'Ошибка'
+        });
+    }
+}
+
+module.exports.addDiscipline = async function (req, res){
+    const { cafedra_id, discipline_name } = req.body;
+    try {
+        await db.none('INSERT INTO discipline (cafedra_id, discipline_name) VALUES ($1, $2)',
+            [cafedra_id, discipline_name]);
+        res.status(200).json({
+            message: 'Успешно'
+        });
+    } catch (e) {
+        res.status(500).json({
+            message: 'Ошибка'
+        });
+    }
+}
+
+module.exports.addCafedra = async function (req, res){
+    const { faculty_id, cafedra_name } = req.body;
+    try {
+        await db.none('INSERT INTO cafedra (faculty_id, cafedra_name) VALUES ($1, $2)',
+            [faculty_id, cafedra_name]);
+        res.status(200).json({
+            message: 'Успешно'
+        });
+    } catch (e) {
+        res.status(500).json({
+            message: 'Ошибка'
+        });
+    }
+}
+
+module.exports.addCompany = async function (req, res){
+    const { company_name } = req.body;
+    try {
+        await db.none('INSERT INTO cafedra (company_name) VALUES ($1)',
+            [company_name]);
+        res.status(200).json({
+            message: 'Успешно'
+        });
+    } catch (e) {
+        res.status(500).json({
+            message: 'Ошибка'
+        });
+    }
+}
+//Следующая таблица - факультеты...
+// Функции удаления
