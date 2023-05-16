@@ -11,7 +11,7 @@ router.post('/update_user',authenticateToken, authenticateAdmin, controller.upda
 router.post('/registration',authenticateToken, authenticateAdmin, controller.registration);
 
 //======= Добавление данных в таблицы =======
-router.post('/add_group_type',authenticateToken, authenticateAdmin, controller.addGroupType);
+router.post('/add_group_type',authenticateToken, authenticateAdmin, controller.addStudentsGroupType);
 
 router.post('/add_students_group',authenticateToken, authenticateAdmin, controller.addStudentsGroup);
 
@@ -30,5 +30,26 @@ router.post('/add_discipline',authenticateToken, authenticateAdmin, controller.a
 router.post('/add_cafedra',authenticateToken, authenticateAdmin, controller.addCafedra);
 
 router.post('/add_company',authenticateToken, authenticateAdmin, controller.addCompany);
+
+//======= Обновление данных в таблицах =======
+router.post('/update_group_type',authenticateToken, authenticateAdmin, controller.updateStudentsGroupType);
+
+router.post('/update_students_group',authenticateToken, authenticateAdmin, controller.updateStudentsGroup);
+
+router.post('/update_students_discipline',authenticateToken, authenticateAdmin, controller.updateStudentsDiscipline);
+
+router.post('/update_role',authenticateToken, authenticateAdmin, controller.updateRole);
+
+router.post('/update_request_status',authenticateToken, authenticateAdmin, controller.updateRequestStatus);
+
+router.post('/update_pub_type',authenticateToken, authenticateAdmin, controller.updatePublicationType);
+
+router.post('/update_faculty',authenticateToken, authenticateAdmin, controller.updateFaculty);
+
+router.post('/update_discipline',authenticateToken, authenticateAdmin, controller.updateDiscipline);
+
+router.post('/update_cafedra',authenticateToken, authenticateAdmin, controller.updateCafedra);
+
+router.post('/update_company',authenticateToken, authenticateAdmin, controller.updateCompany);
 
 module.exports = router
