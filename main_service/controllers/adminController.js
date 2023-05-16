@@ -210,5 +210,5 @@ module.exports.addCompany = async function (req, res){
         });
     }
 }
-//Следующая таблица - факультеты...
+
 // Функции удаления
