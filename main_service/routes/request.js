@@ -4,8 +4,8 @@ const controller = require('../controllers/requestController');
 
 const { authenticateToken } = require('../middleware/authenticateToken');
 
-router.get('/publicaions', controller.getPublications);
 router.post('/create_request', controller.createRequest);
-router.post('/collete_request', controller.colleteRequest);
+
+router.put('/update_status', controller.updateRequestStatus);
 
 module.exports = router
