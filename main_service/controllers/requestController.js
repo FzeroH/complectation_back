@@ -23,7 +23,7 @@ module.exports.createRequest = async function(req,res) {
             message: "Произошла ошибка"
         })
     }
-} // Функция не готова к использованию
+} // Почитать про with и протестить функцию.
 
 module.exports.updateRequestStatus = async function(req,res) {
     const { request_id, request_status_id} = req.body
