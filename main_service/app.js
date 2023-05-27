@@ -22,7 +22,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cors({ origin: '*' }));
+app.use(cors({
+    origin: 'http://127.0.0.1:5174',
+    credentials: true
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -30,7 +33,7 @@ app.use('/api/auth',authRoutes);
 app.use('/api/admin',adminRoutes);
 app.use('/api/request', requestRoutes);
 app.use('/api/company', companyRoutes);
-app.use('/api/publication', publicationRoutes);
+app.use('/api/', publicationRoutes);
 app.use('/api/students_discipline', studentsDisciplineRoutes);
 app.use('/api/user', usertRoutes);
 
