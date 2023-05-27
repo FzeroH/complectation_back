@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Добавил функции обновления таблиц и роуты к ним">
+    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Начал делать функции для работы с заявками">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/routes/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/routes/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/requestController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,21 +116,10 @@
       <workItem from="1684223094324" duration="1029000" />
       <workItem from="1684229382836" duration="5886000" />
       <workItem from="1684488324154" duration="1170000" />
-      <workItem from="1684489905332" duration="3881000" />
-    </task>
-    <task id="LOCAL-00002" summary="Добавил функции login и registration">
-      <created>1683289606601</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1683289606601</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Добавил readme">
-      <created>1683289644225</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1683289644225</updated>
+      <workItem from="1684489905332" duration="6090000" />
+      <workItem from="1684596125345" duration="719000" />
+      <workItem from="1684838373218" duration="707000" />
+      <workItem from="1685119658362" duration="1413000" />
     </task>
     <task id="LOCAL-00004" summary="Добавил парсер для прайс-листов">
       <created>1683296800953</created>
@@ -461,7 +450,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684236187762</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Исправил тип и названия роутов">
+      <created>1684578433962</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1684578433964</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Начал делать функции для работы с заявками">
+      <created>1684596209287</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1684596209288</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -479,8 +482,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Внёс правки в функции с запросами к бд" />
-    <MESSAGE value="Изменил название функции" />
     <MESSAGE value="Удалил неиспользуемую библиотеку" />
     <MESSAGE value="Добавил PyJWT" />
     <MESSAGE value="Подключил проверку JWT токена" />
@@ -504,7 +505,9 @@
     <MESSAGE value="Добавил роуты для запросов на покупку литературы" />
     <MESSAGE value="Удалил лишний комментарий" />
     <MESSAGE value="Добавил функции обновления таблиц и роуты к ним" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил функции обновления таблиц и роуты к ним" />
+    <MESSAGE value="Исправил тип и названия роутов" />
+    <MESSAGE value="Начал делать функции для работы с заявками" />
+    <option name="LAST_COMMIT_MESSAGE" value="Начал делать функции для работы с заявками" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/complectation_back$parser_service.coverage" NAME="parser_service Coverage Results" MODIFIED="1684170963918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
