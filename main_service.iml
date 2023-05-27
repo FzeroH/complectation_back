@@ -2,7 +2,16 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$/main_service" />
+    <content url="file://$MODULE_DIR$/main_service">
+      <sourceFolder url="file://$MODULE_DIR$/main_service/doc_templates" type="java-resource" />
+    </content>
     <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="TemplatesService">
+    <option name="TEMPLATE_FOLDERS">
+      <list>
+        <option value="$MODULE_DIR$/main_service/doc_templates" />
+      </list>
+    </option>
   </component>
 </module>
