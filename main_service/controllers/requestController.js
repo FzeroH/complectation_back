@@ -4,15 +4,17 @@ module.exports.createRequest = async function(req,res) {
     const { pub_type_id, publication_id, users_id, request_status_id, request_count } = req.body
     try {
         await db.tx(async (transaction) => {
-            await transaction.none(`
-        WITH pub_req AS (
-          INSERT INTO publication_request(pub_type_id, publication_id, finaly_request_id, users_id, request_status_id, 0)
-          VALUES ($1, $2, $3, $4, $5)
-          RETURNING publication_request_id
-        )
-        INSERT INTO pub_req_students_discipline(students_disciplne_id, request_id)
-        SELECT $7, publication_request_id FROM pub_req
-      `, [pub_type_id, publication_id, null, users_id, request_status_id, request_count, students_discipline_id]);
+            const pubReqId = await transaction.one(`
+    INSERT INTO publication_request(pub_type_id, publication_id, finaly_request_id, users_id, request_status_id, request_count)
+    VALUES ($1, $2, $3, $4, $5) RETURNING publication_request_id
+  `, [pub_type_id, publication_id, null, users_id, request_status_id]);
+
+            const values = students_discipline_ids.map((students_discipline_id) => {
+                return [students_discipline_id, pubReqId.publication_request_id];
+            });
+
+            await transaction.batch(`INSERT INTO pub_req_students_discipline(students_discipline_id, request_id) 
+VALUES ($1, $2)`, values);
         });
         res.status(200).json({
             message:"Успешно"
