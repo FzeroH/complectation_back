@@ -2,7 +2,9 @@ const { db } = require('../configs/postgresConfig')
 
 module.exports.getPublications = async function (req, res) {
   try {
-      const result = await db.many('SELECT publication_author, publication_title, publication_year, publication_cost, company_name FROM publication JOIN company ON publication.company_id = company.company_id;')
+      const result = await db.many(`
+        SELECT publication_id as id, publication_author, publication_title, publication_year, publication_cost, company_name 
+        FROM publication JOIN company ON publication.company_id = company.company_id;`)
       return res.status(200).json(result)
   } catch (e) {
       console.error(e)
