@@ -1,7 +1,7 @@
 const { db } = require('../configs/postgresConfig');
 const bcrypt = require("bcryptjs");
 
-//TODO: добавить функции на заполнение всех таблиц и настройку связей между ними
+//TODO: добавить функции получение списка данных со всех таблиц (универсалку)
 
 module.exports.getUsers = async function (req, res){
     try {
