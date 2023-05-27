@@ -8,6 +8,6 @@ router.get('/publications', controller.getPublications);
 
 router.get('/publication', controller.getPublicationById);
 
-router.get('/publication', controller.getPublicationType);
+router.get('/pub_types', controller.getPublicationType);
 
 module.exports = router
