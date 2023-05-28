@@ -4,7 +4,11 @@ const controller = require('../controllers/adminController');
 const { authenticateToken } = require('../middleware/authenticateToken');
 const { authenticateAdmin } = require('../middleware/authenticateAdmin');
 
-router.get('/users',authenticateToken, authenticateAdmin, controller.getUsers);
+router.get('/table-list', controller.getTables);
+
+router.get('/table-columns', controller.getColumns);
+
+router.get('/users', controller.getUsers);
 
 router.put('/users',authenticateToken, authenticateAdmin, controller.updateUser);
 

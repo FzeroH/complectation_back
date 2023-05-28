@@ -1,14 +1,55 @@
 const { db } = require('../configs/postgresConfig');
 const bcrypt = require("bcryptjs");
 
-//TODO: добавить функции получение списка данных со всех таблиц (универсалку)
+module.exports.getTables = async function (req, res){
+    try {
+        const result = await db.many(`
+            SELECT table_name as value, table_name as title FROM information_schema. tables 
+            WHERE table_schema NOT IN ('information_schema','pg_catalog');
+        `);
+        res.json(result);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Произошла ошибка'
+        });
+    }
+};
+
+module.exports.getColumns = async function (req, res){
+    const { tableName } = req.query
+    try {
+        const result = await db.many(`
+            SELECT column_name as title, column_name as name, data_type as type
+            FROM information_schema.columns
+            WHERE table_schema = 'public'
+              AND table_name = $1;
+        `,[tableName]);
+        result.map(type => {
+            if (type === 'integer'){
+                type = 'number'
+            }
+            if (type === 'character varying') {
+                type = 'string'
+            }
+        })
+        res.json(result);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Произошла ошибка'
+        });
+    }
+};
 
 module.exports.getUsers = async function (req, res){
+    const { sorting } = req.query
     try {
-        // Получаем список пользователей из базы данных
-        const users = await db.query('SELECT users_id, users_first_name, users_last_name, users_email, role_name FROM users JOIN role ON users.role_id = role.role_id');
-        // Отправляем список пользователей в ответ на запрос
-        res.json(users);
+        const result = await db.many(`SELECT users_id, users_first_name, users_last_name, users_email, role_name 
+                FROM users JOIN role ON users.role_id = role.role_id`, [sorting]);
+        const keys = Object.keys(result[0]);
+        console.log(keys)
+        res.json(result);
     } catch (error) {
         console.error(error);
         res.status(500).json({
