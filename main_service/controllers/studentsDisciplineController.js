@@ -17,7 +17,6 @@ module.exports.getDiscipline = async function (req,res) {
 
 module.exports.getStudentGroupsByDiscipline = async function (req,res) {
     const { id } = req.query
-    console.log("Отработало")
     try {
         const result = await db.many(`
             SELECT sd.students_group_id as value, students_group_name as title
@@ -46,7 +45,6 @@ module.exports.getGroupInfo = async function (req,res) {
             where sd.students_group_id = $2
               and sd.discipline_id = $1;
         `, [discipline_id, student_group_id])
-        console.log(result)
         return res.status(200).json(result)
     } catch (e) {
         console.error(e)

@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Добавил функцию и endpoint для генерации и выгрузки файла с сервера">
+    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Добавил алиасы для корректного отображения на фронте">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/controllers/documentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/documentController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/controllers/publicationController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/publicationController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/controllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/requestController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/controllers/studentsDisciplineController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/studentsDisciplineController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/userController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/routes/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/routes/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/routes/publication.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/routes/publication.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/routes/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/routes/request.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +52,7 @@
     &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\IntelliJ IDEA 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -127,56 +119,8 @@
       <workItem from="1684488324154" duration="1170000" />
       <workItem from="1684489905332" duration="3881000" />
       <workItem from="1685205703835" duration="1182000" />
-      <workItem from="1685261430330" duration="11282000" />
-    </task>
-    <task id="LOCAL-00010" summary="Добавил python-multipart">
-      <created>1683313414134</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1683313414134</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Удалил неиспользуемый тест">
-      <created>1683313451134</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1683313451134</updated>
-    </task>
-    <task id="LOCAL-00012" summary=".">
-      <created>1683313548612</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1683313548612</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Убрал xlrd">
-      <created>1683366124238</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1683366124238</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Добавил загрузку информации в базу данных">
-      <created>1683366188466</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1683366188466</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Добавил подключение базы данных">
-      <created>1683366205707</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1683366205707</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Добавил psycopg2 для взаимодействия с postgresql">
-      <created>1683366241043</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1683366241043</updated>
+      <workItem from="1685261430330" duration="12200000" />
+      <workItem from="1685279699333" duration="189000" />
     </task>
     <task id="LOCAL-00017" summary="Добавил добавил новый модуль">
       <created>1683371524152</created>
@@ -472,7 +416,56 @@
       <option name="project" value="LOCAL" />
       <updated>1685204185878</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Изменил endpoint">
+      <created>1685278929355</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1685278929356</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Изменил endpoint">
+      <created>1685278942466</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1685278942466</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Добавил фильтр публикаций по году">
+      <created>1685278970032</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1685278970032</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Добавил endpoint фильтра публикаций по году">
+      <created>1685278982463</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1685278982464</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Добавил функции создания заказа, получения списка заявок (всего и по id пользователя), фильтрации заявок по издательствам">
+      <created>1685279041899</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1685279041900</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Изменил вывод поля с id роли на название">
+      <created>1685279082003</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1685279082003</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Добавил алиасы для корректного отображения на фронте">
+      <created>1685279105025</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1685279105025</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -490,11 +483,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил роли пользователя" />
-    <MESSAGE value="Исправил функцию обновления роли пользователя" />
-    <MESSAGE value="Явно указал используемый алгоритм" />
-    <MESSAGE value="Добавил функцию проверки роли администратора у пользователя" />
-    <MESSAGE value="Добавил проверку необходимости обновления токена" />
     <MESSAGE value="Добавил опции для функции декодирования" />
     <MESSAGE value="Добавил рабочую версию кода отправки данных в бд" />
     <MESSAGE value="Добавил проверку роли пользователя" />
@@ -508,14 +496,19 @@
     <MESSAGE value="Удалил лишний комментарий" />
     <MESSAGE value="Добавил функции обновления таблиц и роуты к ним" />
     <MESSAGE value="Изменил TODO" />
-    <MESSAGE value="Изменил endpoint" />
     <MESSAGE value="Изменил функцию создания запроса. Доавбил фукнцию создания заказа" />
     <MESSAGE value="Отрефакторил getPublications" />
     <MESSAGE value="Добавил credentials в cors" />
     <MESSAGE value="Добавил библиотеку для генерации docx файлов" />
     <MESSAGE value="Добавил шаблон для генерации документа" />
     <MESSAGE value="Добавил функцию и endpoint для генерации и выгрузки файла с сервера" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил функцию и endpoint для генерации и выгрузки файла с сервера" />
+    <MESSAGE value="Изменил endpoint" />
+    <MESSAGE value="Добавил фильтр публикаций по году" />
+    <MESSAGE value="Добавил endpoint фильтра публикаций по году" />
+    <MESSAGE value="Добавил функции создания заказа, получения списка заявок (всего и по id пользователя), фильтрации заявок по издательствам" />
+    <MESSAGE value="Изменил вывод поля с id роли на название" />
+    <MESSAGE value="Добавил алиасы для корректного отображения на фронте" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил алиасы для корректного отображения на фронте" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/complectation_back$parser_service.coverage" NAME="parser_service Coverage Results" MODIFIED="1684596002824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
