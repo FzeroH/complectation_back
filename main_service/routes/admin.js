@@ -21,7 +21,7 @@ router.post('/role',authenticateToken, authenticateAdmin, controller.addRole);
 
 router.post('/request_status',authenticateToken, authenticateAdmin, controller.addRequestStatus);
 
-router.post('/pub_type',authenticateToken, authenticateAdmin, controller.addPublicationType);
+router.post('/publication_type',authenticateToken, authenticateAdmin, controller.addPublicationType);
 
 router.post('/faculty',authenticateToken, authenticateAdmin, controller.addFaculty);
 
@@ -42,7 +42,7 @@ router.put('/role',authenticateToken, authenticateAdmin, controller.updateRole);
 
 router.put('/request_status',authenticateToken, authenticateAdmin, controller.updateRequestStatus);
 
-router.put('/pub_type',authenticateToken, authenticateAdmin, controller.updatePublicationType);
+router.put('/publication_type',authenticateToken, authenticateAdmin, controller.updatePublicationType);
 
 router.put('/faculty',authenticateToken, authenticateAdmin, controller.updateFaculty);
 
