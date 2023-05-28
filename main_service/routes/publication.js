@@ -10,4 +10,6 @@ router.get('/publication', controller.getPublicationById);
 
 router.get('/pub_types', controller.getPublicationType);
 
+router.get('/filtered_publications', controller.getFilteredPublications);
+
 module.exports = router
