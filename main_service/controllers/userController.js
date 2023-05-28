@@ -4,7 +4,7 @@ module.exports.getUserById = async function (req,res) {
     const { id } = req.query
     try {
         const result = await db.one(`
-            SELECT users_id, users.role_id, users_first_name, users_last_name, users_email FROM users 
+            SELECT users_id, role_name, users_first_name, users_last_name, users_email FROM users 
             JOIN role ON users.role_id = role.role_id WHERE users_id = $1;
         `,[id])
 
