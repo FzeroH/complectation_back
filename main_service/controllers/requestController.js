@@ -6,7 +6,7 @@ module.exports.createRequest = async function(req,res) {
         await db.tx(async (transaction) => {
             const pubReqId = await transaction.one(`
             INSERT INTO publication_request(pub_type_id, publication_id, finaly_request_id, users_id, request_status_id, request_count) 
-            VALUES ($1, $2, $3, $4, $5, $6) RETURNING publication_request_id`,
+            VALUES ($1, $2, null, $4, $5, $6) RETURNING publication_request_id`,
                 [pub_type_id, publication_id, null, users_id, request_status_id, request_count]);
             const values = students_discipline_ids.map((students_discipline_id) => {
                 return [students_discipline_id, pubReqId.publication_request_id];
@@ -43,11 +43,78 @@ module.exports.updateRequestStatus = async function(req,res) {
     }
 }
 
+module.exports.getRequests = async function(req,res) {
+    try {
+        await db.main(
+            `SELECT request_id, pub_type_name, publication_title, finaly_request_id, users_first_name,
+                    users_last_name, request_status_name, request_count
+             FROM publication_request as pr
+             JOIN publication_type as pt ON pr.pub_type_id = pt.pub_type_id
+             JOIN request_status as rs ON pr.request_status_id = rs.request_status_id
+             JOIN publication as pub ON pr.publication_id = pub.publication_id
+             JOIN users as us ON pr.users_id = us.users_id;`)
+        res.status(200).json({
+            message:"Успешно"
+        })
+    } catch (e) {
+        console.error(e)
+        res.status(500).json({
+            message: "Произошла ошибка"
+        })
+    }
+}
+
+module.exports.getRequestsByUserId = async function(req,res) {
+    const { id } = req.query
+    try {
+        await db.main(
+            `SELECT request_id, pub_type_name, publication_title, finaly_request_id, users_first_name,
+                    users_last_name, request_status_name, request_count
+             FROM publication_request as pr
+                JOIN publication_type as pt ON pr.pub_type_id = pt.pub_type_id
+                JOIN request_status as rs ON pr.request_status_id = rs.request_status_id
+                JOIN publication as pub ON pr.publication_id = pub.publication_id
+                JOIN users as us ON pr.users_id = us.users_id; WHERE pr.users_id = $1`,[id])
+        res.status(200).json({
+            message:"Успешно"
+        })
+    } catch (e) {
+        console.error(e)
+        res.status(500).json({
+            message: "Произошла ошибка"
+        })
+    }
+}
+
+module.exports.getFilteredRequest = async function(req,res) {
+    const { id } = req.query
+    try {
+        await db.main(
+            `SELECT request_id, pub_type_name, publication_title, company_name, finaly_request_id, users_first_name,
+                    users_last_name, request_status_name, request_count
+             FROM publication_request as pr
+                      JOIN publication_type as pt ON pr.pub_type_id = pt.pub_type_id
+                      JOIN request_status as rs ON pr.request_status_id = rs.request_status_id
+                      JOIN publication as pub ON pr.publication_id = pub.publication_id
+                      JOIN users as us ON pr.users_id = us.users_id
+                      JOIN company as cp ON pub.company_id = cp.company_id
+             WHERE pub.company_id = $1;`,[id])
+        res.status(200).json({
+            message:"Успешно"
+        })
+    } catch (e) {
+        console.error(e)
+        res.status(500).json({
+            message: "Произошла ошибка"
+        })
+    }
+}
+
 module.exports.createFinalyRequest = async function (req,res){
     const { users_id, publication_request_ids } = req.body
     try {
         const date = new Date()
-        const formattedDate = `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`
+        const formattedDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}`
 
         await db.tx( async (transaction) => {
             const finalyReqId = transaction.one(
