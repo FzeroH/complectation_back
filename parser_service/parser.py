@@ -44,6 +44,7 @@ def parser(filename: str, filepath: str):
     curs = connect.cursor()
     insert_query = "INSERT INTO publication (company_id,publication_author, publication_title, publication_year, publication_cost) VALUES (%s, %s, %s, %s, %s)"
     try:
+        connect.begin()
         for data in json_data:
             if isinstance(data['publication_year'], str):
                 temp = re.search(r"\d{4}", data['publication_year'])
