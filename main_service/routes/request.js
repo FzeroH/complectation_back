@@ -6,14 +6,16 @@ const { authenticateToken } = require('../middleware/authenticateToken');
 
 router.post('/create_request', controller.createRequest);
 
-router.put('/update_status', controller.updateRequestStatus);
+router.put('/change_status', controller.changeRequestStatus);
 
-router.post('/create_finaly_request', controller.createFinalyRequest);
+router.post('/create_order', controller.createOrder);
 
-router.get('/get_requests', controller.getRequests);
+router.get('/requests', controller.getRequests);
 
-router.get('/get_requests', controller.getRequestsByUserId);
+router.get('/requests_by_id', controller.getRequestsByUserId);
 
 router.get('/get_filtered_request', controller.getFilteredRequest);
 
 module.exports = router
+
+//TODO: Сделать функцию получения списка всех заказов

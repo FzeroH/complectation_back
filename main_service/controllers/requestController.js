@@ -26,7 +26,7 @@ module.exports.createRequest = async function(req,res) {
     }
 }
 
-module.exports.updateRequestStatus = async function(req,res) {
+module.exports.changeRequestStatus = async function(req,res) {
     const { request_id, request_status_id} = req.body
     try {
         await db.none(
@@ -110,7 +110,7 @@ module.exports.getFilteredRequest = async function(req,res) {
     }
 }
 
-module.exports.createFinalyRequest = async function (req,res){
+module.exports.createOrder = async function (req,res){
     const { users_id, publication_request_ids } = req.body
     try {
         const date = new Date()
