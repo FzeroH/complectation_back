@@ -37,6 +37,7 @@ module.exports.getGroupInfo = async function (req,res) {
     try {
         const result = await db.one(`
             SELECT ceil(students_group_count / 4) as request_count,
+                   students_group_count,
                    students_discipline_semester,
                    students_group_type_name as students_group_type
             FROM public.students_discipline as sd
