@@ -35,7 +35,7 @@ app.use(express.static('public'));
 app.use('/api/auth',authRoutes);
 app.use('/api/admin',adminRoutes);
 app.use('/api/', requestRoutes);
-app.use('/api/company', companyRoutes);
+app.use('/api/', companyRoutes);
 app.use('/api/', publicationRoutes);
 app.use('/api/', studentsDisciplineRoutes);
 app.use('/api/user', usertRoutes);
