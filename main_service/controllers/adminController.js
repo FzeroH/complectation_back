@@ -1,6 +1,6 @@
 const { db } = require('../configs/postgresConfig');
 const bcrypt = require('bcryptjs');
-import TablesSchema from '../schema/TablesSchema';
+const TablesSchema = require('../schema/TablesSchema');
 
 module.exports.getTables = async function (req, res){
     try {
