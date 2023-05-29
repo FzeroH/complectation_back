@@ -1,13 +1,11 @@
 const { db } = require('../configs/postgresConfig');
-const bcrypt = require("bcryptjs");
+const bcrypt = require('bcryptjs');
+import TablesSchema from '../schema/TablesSchema';
 
 module.exports.getTables = async function (req, res){
     try {
-        const result = await db.many(`
-            SELECT table_name as value, table_name as title FROM information_schema. tables 
-            WHERE table_schema NOT IN ('information_schema','pg_catalog');
-        `);
-        res.json(result);
+        const { tables } = TablesSchema
+        res.status(200).json(tables);
     } catch (error) {
         console.error(error);
         res.status(500).json({
