@@ -44,42 +44,43 @@ def parser(filename: str, filepath: str):
     curs = connect.cursor()
     insert_query = "INSERT INTO publication (company_id,publication_author, publication_title, publication_year, publication_cost) VALUES (%s, %s, %s, %s, %s)"
     try:
-        connect.begin()
-        for data in json_data:
-            if isinstance(data['publication_year'], str):
-                temp = re.search(r"\d{4}", data['publication_year'])
-                if temp:
-                    data['publication_year'] = temp.group()
-            if data['publication_year']:
-                data['publication_year'] = str(int(data['publication_year']))
+        with connect:
+            for data in json_data:
+                if isinstance(data['publication_year'], str):
+                    temp = re.search(r"\d{4}", data['publication_year'])
+                    if temp:
+                        data['publication_year'] = temp.group()
+                if data['publication_year']:
+                    data['publication_year'] = str(int(data['publication_year']))
 
-            publication_cost_exceptions = ['готовится к изданию', 'ожидается переиздание', 'ожидается пееиздание',
-                                           'не для подажи', 'не для продажи', 'в электонном виде', 'в электронном виде']
-            if isinstance(data['publication_cost'], str) and data['publication_cost'].lower() in publication_cost_exceptions:
-                continue
-            if isinstance(data['publication_cost'], str) and 'р' in data['publication_cost']:
-                data['publication_cost'] = data['publication_cost'].replace('р', '').strip()
-            if isinstance(data['publication_cost'], str) and 'комплект' in data['publication_cost']:
-                data['publication_cost'] = data['publication_cost'].replace('комплект', '').strip()
-            if isinstance(data['publication_cost'], str) and ',' in data['publication_cost']:
-                data["publication_cost"] = float(data['publication_cost'].replace(',', '.'))
-            if data['publication_cost'] is not None and not isinstance(data['publication_cost'], str):
-                data['publication_cost'] = float(data['publication_cost'])
+                publication_cost_exceptions = ['готовится к изданию', 'ожидается переиздание', 'ожидается пееиздание',
+                                               'не для подажи', 'не для продажи', 'в электонном виде', 'в электронном виде']
+                if isinstance(data['publication_cost'], str) and data['publication_cost'].lower() in publication_cost_exceptions:
+                    continue
+                if isinstance(data['publication_cost'], str) and 'р' in data['publication_cost']:
+                    data['publication_cost'] = data['publication_cost'].replace('р', '').strip()
+                if isinstance(data['publication_cost'], str) and 'комплект' in data['publication_cost']:
+                    data['publication_cost'] = data['publication_cost'].replace('комплект', '').strip()
+                if isinstance(data['publication_cost'], str) and ',' in data['publication_cost']:
+                    data["publication_cost"] = float(data['publication_cost'].replace(',', '.'))
+                if data['publication_cost'] is not None and not isinstance(data['publication_cost'], str):
+                    data['publication_cost'] = float(data['publication_cost'])
 
-            if not data['publication_author']:
-                data['publication_author'] = '-'
+                if not data['publication_author']:
+                    data['publication_author'] = '-'
 
-            if not (data['publication_cost'] and data['publication_year']):
-                continue
+                if not (data['publication_cost'] and data['publication_year']):
+                    continue
 
-            if not data['publication_title']:
-                continue
+                if not data['publication_title']:
+                    continue
 
-            values = (6, data['publication_author'], data['publication_title'], data['publication_year'], data['publication_cost'])
-            curs.execute(insert_query, values)
-        connect.commit()
-        curs.close()
+                values = (6, data['publication_author'], data['publication_title'], data['publication_year'], data['publication_cost'])
+                curs.execute(insert_query, values)
     except Exception as e:
         connect.rollback()
         print(f"Error processing data: {e}")
-
+    else:
+        connect.commit()
+    finally:
+        curs.close()
