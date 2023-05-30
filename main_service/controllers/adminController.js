@@ -1,6 +1,20 @@
 const { db } = require('../configs/postgresConfig');
 const bcrypt = require('bcryptjs');
 const TablesSchema = require('../schema/TablesSchema');
+const UsersSchema = require('../schema/UsersSchema');
+const CompanySchema = require('../schema/CompanySchema');
+const StudentsGroupSchema = require('../schema/StudentsGroupSchema');
+const StudentsDisciplineSchema = require('../schema/StudentsDisciplineSchema');
+const DisciplineSchema = require('../schema/DisciplineSchema');
+
+
+const schemas = {
+    users: UsersSchema,
+    company:CompanySchema,
+    students_group: StudentsGroupSchema,
+    students_discipline: StudentsDisciplineSchema,
+    discipline: DisciplineSchema
+}
 
 module.exports.getTables = async function (req, res){
     try {
@@ -17,21 +31,20 @@ module.exports.getTables = async function (req, res){
 module.exports.getColumns = async function (req, res){
     const { tableName } = req.query
     try {
-        const result = await db.many(`
-            SELECT column_name as title, column_name as name, data_type as type
-            FROM information_schema.columns
-            WHERE table_schema = 'public'
-              AND table_name = $1;
-        `,[tableName]);
-        result.map(type => {
-            if (type === 'integer'){
-                type = 'number'
-            }
-            if (type === 'character varying') {
-                type = 'string'
-            }
+        const tableSchema = schemas[tableName];
+        if (!tableSchema) {
+            throw new Error(`Schema not found for table: ${tableName}`);
+        }
+        const { tableHeaders } = tableSchema;
+        const roleName = await db.many(`SELECT role_id as value, role_name as title FROM role`);
+
+        tableHeaders.push({
+                title: 'Роль пользователя',
+                name:'role_id',
+                type: 'number',
+                list: roleName
         })
-        res.json(result);
+        res.json(tableHeaders);
     } catch (error) {
         console.error(error);
         res.status(500).json({
@@ -41,13 +54,14 @@ module.exports.getColumns = async function (req, res){
 };
 
 module.exports.getUsers = async function (req, res){
-    const { sorting } = req.query
+    const { sorting : sort } = req.query
+    const field = sort?.field ?? 'users_id';
+    const direction = sort?.direction ?? 'asc';
+
     try {
-        const result = await db.many(`SELECT users_id, users_first_name, users_last_name, users_email, role_name 
-                FROM users JOIN role ON users.role_id = role.role_id`, [sorting]);
-        const keys = Object.keys(result[0]);
-        console.log(keys)
-        res.json(result);
+        const result = await db.many(`SELECT users_id, users_first_name, users_last_name, users_email, users.role_id 
+                FROM users JOIN role ON users.role_id = role.role_id ORDER BY ${field} ${direction}`, { field, direction });
+        res.status(200).json(result);
     } catch (error) {
         console.error(error);
         res.status(500).json({
