@@ -4,12 +4,8 @@ const UserSchema = {
         {
             title: 'ID',
             name:'users_id',
-            type: 'integer'
-        },
-        {
-            title: 'Роль пользователя',
-            name:'role_name',
-            type: 'string'
+            type: 'number',
+            disabled: true
         },
         {
             title: 'Имя',

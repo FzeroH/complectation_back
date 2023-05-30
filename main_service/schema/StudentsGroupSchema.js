@@ -4,7 +4,8 @@ const StudentsGroupSchema = {
         {
             title: 'ID',
             name:'students_group_id',
-            type: 'integer'
+            type: 'number',
+            disabled: true
         },
         {
             title: 'Кафедра',

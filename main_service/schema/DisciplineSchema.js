@@ -4,7 +4,7 @@ const DisciplineSchema = {
         {
             title: 'ID',
             name:'discipline_id',
-            type: 'integer'
+            type: 'number'
         },
         {
             title: 'Кафедра',

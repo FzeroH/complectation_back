@@ -4,7 +4,7 @@ const StudentsGroupSchema = {
         {
             title: 'ID',
             name:'students_discipline_id',
-            type: 'integer'
+            type: 'number'
         },
         {
             title: 'Предмет',
