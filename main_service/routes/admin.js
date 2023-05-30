@@ -12,7 +12,7 @@ router.get('/users', controller.getUsers);
 
 router.put('/users',authenticateToken, authenticateAdmin, controller.updateUser);
 
-router.post('/users',authenticateToken, authenticateAdmin, controller.registration);
+router.post('/users', controller.registration);
 
 //======= Добавление данных в таблицы =======
 router.post('/group_type',authenticateToken, authenticateAdmin, controller.addStudentsGroupType);
