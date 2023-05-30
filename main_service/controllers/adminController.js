@@ -14,6 +14,53 @@ const schemas = {
     students_group: StudentsGroupSchema,
     students_discipline: StudentsDisciplineSchema,
     discipline: DisciplineSchema
+};
+
+const columnSchemas = {
+    users: {
+        title: 'Роль пользователя',
+        name:'role_id',
+        type: 'number',
+        list: async () => {
+            await db.many(`SELECT role_id as value, role_name as title FROM role`);
+        }
+    },
+    discipline: {
+        title: 'Кафедра',
+        name:'cafedra_id',
+        type:'number',
+        list: async ()=> {
+            await db.many(`SELECT cafedra_id as value, cafedra_name as title FROM cafedra`);
+        }
+    },
+    students_discipline: [
+        {
+            title: 'Предмет',
+            name:'discipline_id',
+            type: 'number',
+            list: async ()=> {
+                await db.many(`SELECT discipline_id as value, discipline_name as title FROM discipline`);
+            }
+        },
+        {
+            title: 'Преподаватель',
+            name:'users_id',
+            type: 'number',
+            list: async ()=> {
+                await db.many(`SELECT users_id as value, users_first_name || ' ' || users.users_last_name title 
+                    FROM users WHERE role_id = 2`);
+            }
+        },
+        {
+            title: 'Группа',
+            name:'students_group_id',
+            type: 'number',
+            list: async ()=> {
+                await db.many(`SELECT students_group_id as value, students_group_name as title FROM students_group`);
+            }
+        },
+    ]
+
 }
 
 module.exports.getTables = async function (req, res){
@@ -28,22 +75,71 @@ module.exports.getTables = async function (req, res){
     }
 };
 
+// module.exports.getColumns = async function (req, res){
+//     const { tableName } = req.query
+//     try {
+//         const tableSchema = schemas[tableName];
+//         if (!tableSchema) {
+//             throw new Error(`Schema not found for table: ${tableName}`);
+//         }
+//         const { tableHeaders } = tableSchema;
+//
+//         tableHeaders.push({
+//                 title: 'Роль пользователя',
+//                 name:'role_id',
+//                 type: 'number',
+//                 list: elementsName
+//         })
+//         res.json(tableHeaders);
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({
+//             message: 'Произошла ошибка'
+//         });
+//     }
+// };
+
 module.exports.getColumns = async function (req, res){
-    const { tableName } = req.query
+    const { tableName } = req.query;
     try {
         const tableSchema = schemas[tableName];
         if (!tableSchema) {
             throw new Error(`Schema not found for table: ${tableName}`);
         }
         const { tableHeaders } = tableSchema;
-        const roleName = await db.many(`SELECT role_id as value, role_name as title FROM role`);
 
-        tableHeaders.push({
-                title: 'Роль пользователя',
-                name:'role_id',
-                type: 'number',
-                list: roleName
-        })
+        // Добавляем элементы из columnSchemas
+        if (columnSchemas.hasOwnProperty(tableName)) {
+            const columns = columnSchemas[tableName];
+            if (Array.isArray(columns)) {
+                // Если columns является массивом, добавляем каждый элемент отдельно
+                for (const column of columns) {
+                    const { title, name, type, list } = column;
+                    if (typeof list === 'function') {
+                        const elements = await list(); // Вызываем функцию list и получаем результат
+                        tableHeaders.push({
+                            title,
+                            name,
+                            type,
+                            list: elements
+                        });
+                    }
+                }
+            } else {
+                // Если columns является объектом, добавляем его целиком
+                const { title, name, type, list } = columns;
+                if (typeof list === 'function') {
+                    const elements = await list(); // Вызываем функцию list и получаем результат
+                    tableHeaders.push({
+                        title,
+                        name,
+                        type,
+                        list: elements
+                    });
+                }
+            }
+        }
+
         res.json(tableHeaders);
     } catch (error) {
         console.error(error);
@@ -52,6 +148,7 @@ module.exports.getColumns = async function (req, res){
         });
     }
 };
+
 
 module.exports.getUsers = async function (req, res){
     const { sorting : sort } = req.query
