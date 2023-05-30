@@ -22,7 +22,7 @@ const columnSchemas = {
         name:'role_id',
         type: 'number',
         list: async () => {
-            await db.many(`SELECT role_id as value, role_name as title FROM role`);
+            return await db.many(`SELECT role_id as value, role_name as title FROM role`);
         }
     },
     discipline: {
@@ -30,7 +30,7 @@ const columnSchemas = {
         name:'cafedra_id',
         type:'number',
         list: async ()=> {
-            await db.many(`SELECT cafedra_id as value, cafedra_name as title FROM cafedra`);
+            return await db.many(`SELECT cafedra_id as value, cafedra_name as title FROM cafedra`);
         }
     },
     students_discipline: [
@@ -39,7 +39,7 @@ const columnSchemas = {
             name:'discipline_id',
             type: 'number',
             list: async ()=> {
-                await db.many(`SELECT discipline_id as value, discipline_name as title FROM discipline`);
+                return await db.many(`SELECT discipline_id as value, discipline_name as title FROM discipline`);
             }
         },
         {
@@ -47,7 +47,7 @@ const columnSchemas = {
             name:'users_id',
             type: 'number',
             list: async ()=> {
-                await db.many(`SELECT users_id as value, users_first_name || ' ' || users.users_last_name title 
+               return await db.many(`SELECT users_id as value, users_first_name || ' ' || users.users_last_name title 
                     FROM users WHERE role_id = 2`);
             }
         },
@@ -56,7 +56,25 @@ const columnSchemas = {
             name:'students_group_id',
             type: 'number',
             list: async ()=> {
-                await db.many(`SELECT students_group_id as value, students_group_name as title FROM students_group`);
+                return await db.many(`SELECT students_group_id as value, students_group_name as title FROM students_group`);
+            }
+        },
+    ],
+    students_group: [
+        {
+            title: 'Кафедра',
+            name:'cafedra_id',
+            type: 'number',
+            list: async ()=> {
+                return await db.many(`SELECT cafedra_id as value, cafedra_name as title FROM cafedra`);
+            }
+        },
+        {
+            title: 'Тип группы',
+            name:'students_group_type_id',
+            type: 'number',
+            list: async ()=> {
+                return await db.many(`SELECT students_group_type_id as value, students_group_type_name as title FROM students_group_type`);
             }
         },
     ]
@@ -108,15 +126,17 @@ module.exports.getColumns = async function (req, res){
         }
         const { tableHeaders } = tableSchema;
 
-        // Добавляем элементы из columnSchemas
+        // Добавляем элементы из columnSchemas, если они доступны
         if (columnSchemas.hasOwnProperty(tableName)) {
             const columns = columnSchemas[tableName];
             if (Array.isArray(columns)) {
                 // Если columns является массивом, добавляем каждый элемент отдельно
                 for (const column of columns) {
                     const { title, name, type, list } = column;
+                    console.log(typeof list, typeof list === 'function')
                     if (typeof list === 'function') {
                         const elements = await list(); // Вызываем функцию list и получаем результат
+                        console.log(elements)
                         tableHeaders.push({
                             title,
                             name,
@@ -139,7 +159,6 @@ module.exports.getColumns = async function (req, res){
                 }
             }
         }
-
         res.json(tableHeaders);
     } catch (error) {
         console.error(error);
@@ -167,7 +186,81 @@ module.exports.getUsers = async function (req, res){
     }
 };
 
-// Функции добавления данных
+module.exports.getStudentsDiscipline = async function (req, res){
+    const { sorting : sort } = req.query
+    const field = sort?.field ?? 'students_discipline_id';
+    const direction = sort?.direction ?? 'asc';
+
+    try {
+        const result = await db.many(`SELECT students_discipline_id, sd.discipline_id, sd.students_group_id,
+                                    sd.users_id, students_discipline_semester
+                                    FROM students_discipline as sd JOIN users as us ON sd.users_id = us.users_id
+                                    JOIN discipline as ds ON sd.discipline_id = ds.discipline_id
+                                    JOIN students_group as sg ON sd.students_group_id = sg.students_group_id 
+                                    ORDER BY ${field} ${direction}`, { field, direction });
+        res.status(200).json(result);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Произошла ошибка'
+        });
+    }
+}
+
+module.exports.getCompany = async function (req, res){
+    const { sorting : sort } = req.query
+    const field = sort?.field ?? 'company_id';
+    const direction = sort?.direction ?? 'asc';
+
+    try {
+        const result = await db.many(`SELECT company_id , company_name FROM company 
+                                    ORDER BY ${field} ${direction}`, { field, direction });
+        res.status(200).json(result);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Произошла ошибка'
+        });
+    }
+}
+
+module.exports.getStudentsGroup = async function (req, res){
+    const { sorting : sort } = req.query
+    const field = sort?.field ?? 'students_group_id';
+    const direction = sort?.direction ?? 'asc';
+
+    try {
+        const result = await db.many(`SELECT students_group_id, sg.cafedra_id, sg.students_group_type_id, students_group_name, students_group_count
+                                    FROM students_group as sg JOIN cafedra as cf ON sg.cafedra_id = cf.cafedra_id
+                                    JOIN students_group_type as sgt ON sg.students_group_type_id = sgt.students_group_type_id 
+                                    ORDER BY ${field} ${direction}`, { field, direction });
+        res.status(200).json(result);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Произошла ошибка'
+        });
+    }
+}
+
+module.exports.getDiscipline = async function (req, res){
+    const { sorting : sort } = req.query
+    const field = sort?.field ?? 'discipline_id';
+    const direction = sort?.direction ?? 'asc';
+
+    try {
+        const result = await db.many(`SELECT discipline_id, sd.cafedra_id, discipline_name FROM discipline as sd
+                                    JOIN cafedra as cf ON sd.cafedra_id = cf.cafedra_id 
+                                    ORDER BY ${field} ${direction}`, { field, direction });
+        res.status(200).json(result);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Произошла ошибка'
+        });
+    }
+}
+
 module.exports.registration =  async function (req, res) {
     const { users_first_name, users_last_name, users_email, users_password } = req.body;
     console.log(req.body);
@@ -194,335 +287,4 @@ module.exports.registration =  async function (req, res) {
     }
 };
 
-module.exports.addStudentsGroupType = async function (req, res) {
-    const { students_group_type_name } = req.body;
-    try {
-        await db.none('INSERT INTO students_group_type (students_group_type_name) VALUES ($1)',
-            [students_group_type_name]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-};
-
-module.exports.addStudentsGroup = async function (req, res){
-    const { cafedra_id, students_group_type_id, students_group_name, students_group_count } = req.body;
-    try {
-        await db.none('INSERT INTO students_group (cafedra_id, students_group_type_id, students_group_name, students_group_count) VALUES ($1, $2, $3, $4)',
-            [cafedra_id, students_group_type_id, students_group_name, students_group_count]);
-        res.status(200).json({
-            message: 'Успешно'
-        })
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        })
-    }
-}
-
-module.exports.addStudentsDiscipline = async function (req, res){
-    const { discipline_id, students_group_id, users_id } = req.body;
-    try {
-        await db.none('INSERT INTO students_discipline (discipline_id, students_group_id, users_id) VALUES ($1, $2, $3)',
-            [discipline_id, students_group_id, users_id]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-module.exports.addRole = async function (req, res){
-    const { role_name } = req.body;
-    try {
-        await db.none('INSERT INTO role (role_name) VALUES ($1)',
-            [role_name]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-module.exports.addRequestStatus = async function (req, res){
-    const { request_status_name } = req.body;
-    try {
-        await db.none('INSERT INTO request_status (request_status_name) VALUES ($1)',
-            [request_status_name]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-module.exports.addPublicationType = async function (req, res){
-    const { pub_type_name } = req.body;
-    try {
-        await db.none('INSERT INTO publication_type (pub_type_name) VALUES ($1)',
-            [pub_type_name]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-module.exports.addFaculty = async function (req, res){
-    const { faculty_name } = req.body;
-    try {
-        await db.none('INSERT INTO faculty (faculty_name) VALUES ($1)',
-            [faculty_name]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-module.exports.addDiscipline = async function (req, res){
-    const { cafedra_id, discipline_name } = req.body;
-    try {
-        await db.none('INSERT INTO discipline (cafedra_id, discipline_name) VALUES ($1, $2)',
-            [cafedra_id, discipline_name]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-module.exports.addCafedra = async function (req, res){
-    const { faculty_id, cafedra_name } = req.body;
-    try {
-        await db.none('INSERT INTO cafedra (faculty_id, cafedra_name) VALUES ($1, $2)',
-            [faculty_id, cafedra_name]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-module.exports.addCompany = async function (req, res){
-    const { company_name } = req.body;
-    try {
-        await db.none('INSERT INTO company (company_name) VALUES ($1)',
-            [company_name]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-// Функции обновления
-module.exports.updateUser = async function (req, res) {
-    const { users_id, users_first_name, users_last_name, users_email } = req.body;
-    try {
-        await db.none('UPDATE users SET users_first_name = $2, users_last_name = $3, users_email = $4 WHERE users_id = $1',
-            [users_id, users_first_name, users_last_name, users_email]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-module.exports.updateStudentsGroupType = async function (req, res) {
-    const { students_group_type_id, students_group_type_name } = req.body;
-    try {
-        await db.none('UPDATE students_group_type SET students_group_type_name = $2 WHERE students_group_type_id = $1',
-            [students_group_type_id, students_group_type_name]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-module.exports.updateStudentsGroup = async function (req, res) {
-    const { students_group_id, cafedra_id, students_group_type_id, students_group_name, students_group_count } = req.body;
-    try {
-        await db.none('UPDATE students_group SET cafedra_id = $2, students_group_type_id = $3, students_group_name = $4, students_group_count = $5 WHERE students_group_id = $1',
-            [students_group_id, cafedra_id, students_group_type_id, students_group_name, students_group_count]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-module.exports.updateStudentsDiscipline = async function (req, res) {
-    const { students_discipline_id, discipline_id, students_group_id, users_id } = req.body;
-    try {
-        await db.none('UPDATE students_discipline SET discipline_id = $2, students_group_id = $3, users_id = $4 WHERE students_discipline_id = $1',
-            [students_discipline_id, discipline_id, students_group_id, users_id]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-module.exports.updateRole = async function (req, res) {
-    const { role_id, role_name } = req.body;
-    try {
-        await db.none('UPDATE role SET role_name = $2 WHERE role_id = $1',
-            [role_id, role_name]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-module.exports.updateRequestStatus = async function (req, res) {
-    const { request_status_id, request_status_name } = req.body;
-    try {
-        await db.none('UPDATE request_status SET request_status_name = $2 WHERE request_status_id = $1',
-            [request_status_id, request_status_name]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-module.exports.updatePublicationType = async function (req, res) {
-    const { pub_type_id, pub_type_name } = req.body;
-    try {
-        await db.none('UPDATE publication_type SET pub_type_name = $2 WHERE pub_type_id = $1',
-            [pub_type_id, pub_type_name]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-module.exports.updatePublication = async function (req, res) {
-    const { publication_id, company_id, publication_author, publication_title, publication_year, publication_cost } = req.body;
-    try {
-        await db.none('UPDATE publication SET company_id = $2, publication_author = $3, publication_title = $4, publication_year = $5, publication_cost = $6 WHERE publication_id = $1',
-            [publication_id, company_id, publication_author, publication_title, publication_year, publication_cost]);
-        res.status(200
-        ).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-module.exports.updateFaculty = async function (req, res) {
-    const { faculty_id, faculty_name } = req.body;
-    try {
-        await db.none('UPDATE faculty SET faculty_name = $2 WHERE faculty_id = $1',
-            [faculty_id, faculty_name]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-module.exports.updateDiscipline = async function (req, res) {
-    const { discipline_id, cafedra_id, discipline_name } = req.body;
-    try {
-        await db.none('UPDATE discipline SET cafedra_id = $2, discipline_name = $3 WHERE discipline_id = $1',
-            [discipline_id, cafedra_id, discipline_name]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-module.exports.updateCafedra = async function (req, res) {
-    const { cafedra_id, faculty_id, cafedra_name } = req.body;
-    try {
-        await db.none('UPDATE cafedra SET faculty_id = $2, cafedra_name = $3 WHERE cafedra_id = $1',
-            [cafedra_id, faculty_id, cafedra_name]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
-
-module.exports.updateCompany = async function (req, res) {
-    const { company_id, company_name } = req.body;
-    try {
-        await db.none('UPDATE company SET company_name = $2 WHERE company_id = $1',
-            [company_id, company_name]);
-        res.status(200).json({
-            message: 'Успешно'
-        });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Ошибка'
-        });
-    }
-}
 
