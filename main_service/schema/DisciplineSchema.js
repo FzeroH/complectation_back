@@ -4,12 +4,8 @@ const DisciplineSchema = {
         {
             title: 'ID',
             name:'discipline_id',
-            type: 'number'
-        },
-        {
-            title: 'Кафедра',
-            name:'cafedra_name',
-            type:'string'
+            type: 'number',
+            disabled: true
         },
         {
             title: 'Предмет',

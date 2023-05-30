@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Добавил фукнции получения списка таблиц и списка колонок в таблице">
+    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Изменил функцию получения списка таблиц">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_service/controllers/adminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/adminController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/routes/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/routes/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/schema/CompanySchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/schema/CompanySchema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/schema/DisciplineSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/schema/DisciplineSchema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/schema/StudentsDisciplineSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/schema/StudentsDisciplineSchema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/schema/StudentsGroupSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/schema/StudentsGroupSchema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/schema/UsersSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/schema/UsersSchema.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser_service/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser_service/parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser_service/parser_service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/parser_service/parser_service.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,33 +37,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.15.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.34&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sauru/Desktop/ВКР/ИС Комплектация/complectation_back/main_service/doc_templates&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;E:\\IntelliJ IDEA 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "javascript.nodejs.core.library.configured.version": "18.16.0",
+    "javascript.nodejs.core.library.typings.version": "18.16.0",
+    "last_opened_file_path": "C:/Users/sauru/Desktop/ВКР/ИС Комплектация/complectation_back/main_service/doc_templates",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\sauru\Desktop\ВКР\ИС Комплектация\complectation_back\main_service\doc_templates" />
@@ -82,18 +79,29 @@
       <recent name="$PROJECT_DIR$/parser_service/priselist" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="FastAPI.parser_service">
     <configuration name="parser_service" type="Python.FastAPI">
       <option name="file" value="$PROJECT_DIR$/parser_service/main.py" />
       <module name="parser_service" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/parser_service/venv/bin/python" />
+      <option name="SDK_NAME" value="Python 3.10 (parser_service) (2)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </EXTENSION>
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
@@ -126,10 +134,113 @@
       <workItem from="1684229382836" duration="5886000" />
       <workItem from="1684488324154" duration="1170000" />
       <workItem from="1684489905332" duration="3881000" />
-      <workItem from="1685205703835" duration="1182000" />
-      <workItem from="1685261430330" duration="12200000" />
-      <workItem from="1685279699333" duration="189000" />
-      <workItem from="1685289218703" duration="6570000" />
+      <workItem from="1685375028018" duration="333000" />
+      <workItem from="1685377454237" duration="1146000" />
+    </task>
+    <task id="LOCAL-00009" summary="Изменил параметры функции, добавил словарь для определения начала столбцов в таблицах">
+      <created>1683313398112</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1683313398112</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Добавил python-multipart">
+      <created>1683313414134</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1683313414134</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Удалил неиспользуемый тест">
+      <created>1683313451134</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1683313451134</updated>
+    </task>
+    <task id="LOCAL-00012" summary=".">
+      <created>1683313548612</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1683313548612</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Убрал xlrd">
+      <created>1683366124238</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1683366124238</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Добавил загрузку информации в базу данных">
+      <created>1683366188466</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1683366188466</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Добавил подключение базы данных">
+      <created>1683366205707</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1683366205707</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Добавил psycopg2 для взаимодействия с postgresql">
+      <created>1683366241043</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1683366241043</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Добавил добавил новый модуль">
+      <created>1683371524152</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1683371524152</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Подправил названия переменных. Убрал генерацию токена при регистрации">
+      <created>1683371578063</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1683371578063</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Добавил роуты для взаимодействия админа с пользователями">
+      <created>1683371651293</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1683371651293</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Добавил сервис администрирования">
+      <created>1683371752202</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1683371752203</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Добавил подключение к базе данных">
+      <created>1683371762655</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1683371762655</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Добавил функцию проверки токена">
+      <created>1683371780220</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1683371780220</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Добавил функцию получить список пользователей">
+      <created>1683371814474</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1683371814474</updated>
     </task>
     <task id="LOCAL-00024" summary=".">
       <created>1683371843407</created>
@@ -355,133 +466,25 @@
       <option name="project" value="LOCAL" />
       <updated>1685194024678</updated>
     </task>
-    <task id="LOCAL-00056" summary="Добавил библиотеку для генерации docx файлов">
-      <created>1685204135856</created>
+    <task id="LOCAL-00056" summary="Добавил схему таблицы">
+      <created>1685374467268</created>
       <option name="number" value="00056" />
       <option name="presentableId" value="LOCAL-00056" />
       <option name="project" value="LOCAL" />
-      <updated>1685204135856</updated>
+      <updated>1685374467269</updated>
     </task>
-    <task id="LOCAL-00057" summary="Добавил шаблон для генерации документа">
-      <created>1685204153878</created>
+    <task id="LOCAL-00057" summary="Изменил функцию получения списка таблиц">
+      <created>1685374489556</created>
       <option name="number" value="00057" />
       <option name="presentableId" value="LOCAL-00057" />
       <option name="project" value="LOCAL" />
-      <updated>1685204153878</updated>
+      <updated>1685374489556</updated>
     </task>
-    <task id="LOCAL-00058" summary="Добавил функцию и endpoint для генерации и выгрузки файла с сервера">
-      <created>1685204185878</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1685204185878</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Изменил endpoint">
-      <created>1685278929355</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1685278929356</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Изменил endpoint">
-      <created>1685278942466</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1685278942466</updated>
-    </task>
-    <task id="LOCAL-00061" summary="Добавил фильтр публикаций по году">
-      <created>1685278970032</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1685278970032</updated>
-    </task>
-    <task id="LOCAL-00062" summary="Добавил endpoint фильтра публикаций по году">
-      <created>1685278982463</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1685278982464</updated>
-    </task>
-    <task id="LOCAL-00063" summary="Добавил функции создания заказа, получения списка заявок (всего и по id пользователя), фильтрации заявок по издательствам">
-      <created>1685279041899</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1685279041900</updated>
-    </task>
-    <task id="LOCAL-00064" summary="Изменил вывод поля с id роли на название">
-      <created>1685279082003</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1685279082003</updated>
-    </task>
-    <task id="LOCAL-00065" summary="Добавил алиасы для корректного отображения на фронте">
-      <created>1685279105025</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1685279105025</updated>
-    </task>
-    <task id="LOCAL-00066" summary="Убрал вывод в консоль">
-      <created>1685289376104</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1685289376104</updated>
-    </task>
-    <task id="LOCAL-00067" summary="Сделал выполнение запроса к базе внутри транзакции">
-      <created>1685295345455</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1685295345455</updated>
-    </task>
-    <task id="LOCAL-00068" summary="Подправил роут">
-      <created>1685295369475</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1685295369475</updated>
-    </task>
-    <task id="LOCAL-00069" summary="Изменил название функции update на change">
-      <created>1685295395377</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1685295395377</updated>
-    </task>
-    <task id="LOCAL-00070" summary="Добавил к запросу вывод количество студентов">
-      <created>1685295421946</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1685295421946</updated>
-    </task>
-    <task id="LOCAL-00071" summary="Добавил алиасы для корректной отправки на фронт">
-      <created>1685295453424</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1685295453424</updated>
-    </task>
-    <task id="LOCAL-00072" summary="Добавил фукнции получения списка таблиц и списка колонок в таблице">
-      <created>1685295475792</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1685295475792</updated>
-    </task>
-    <option name="localTasksCounter" value="73" />
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="UnknownFeatures">
-    <option featureType="dependencySupport" implementationName="javascript:npm:pug" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -495,34 +498,34 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Изменил роуты" />
+    <MESSAGE value="Добавил роли пользователя" />
+    <MESSAGE value="Исправил функцию обновления роли пользователя" />
+    <MESSAGE value="Явно указал используемый алгоритм" />
+    <MESSAGE value="Добавил функцию проверки роли администратора у пользователя" />
+    <MESSAGE value="Добавил проверку необходимости обновления токена" />
+    <MESSAGE value="Добавил опции для функции декодирования" />
+    <MESSAGE value="Добавил рабочую версию кода отправки данных в бд" />
+    <MESSAGE value="Добавил проверку роли пользователя" />
+    <MESSAGE value="Соединил сервисы авторизации и администрирования в один" />
+    <MESSAGE value="Удалил лишний файл" />
+    <MESSAGE value="Добавил необходимые проверки корректности данных" />
+    <MESSAGE value="отключил проверку токена" />
     <MESSAGE value="Перенёс регистрацию в контроллер админа" />
     <MESSAGE value="Добавил функции заполнения таблиц от админа" />
     <MESSAGE value="Добавил роуты для запросов на покупку литературы" />
     <MESSAGE value="Удалил лишний комментарий" />
     <MESSAGE value="Добавил функции обновления таблиц и роуты к ним" />
     <MESSAGE value="Изменил TODO" />
+    <MESSAGE value="Изменил endpoint" />
     <MESSAGE value="Изменил функцию создания запроса. Доавбил фукнцию создания заказа" />
     <MESSAGE value="Отрефакторил getPublications" />
     <MESSAGE value="Добавил credentials в cors" />
-    <MESSAGE value="Добавил библиотеку для генерации docx файлов" />
-    <MESSAGE value="Добавил шаблон для генерации документа" />
-    <MESSAGE value="Добавил функцию и endpoint для генерации и выгрузки файла с сервера" />
-    <MESSAGE value="Изменил endpoint" />
-    <MESSAGE value="Добавил фильтр публикаций по году" />
-    <MESSAGE value="Добавил endpoint фильтра публикаций по году" />
-    <MESSAGE value="Добавил функции создания заказа, получения списка заявок (всего и по id пользователя), фильтрации заявок по издательствам" />
-    <MESSAGE value="Изменил вывод поля с id роли на название" />
-    <MESSAGE value="Добавил алиасы для корректного отображения на фронте" />
-    <MESSAGE value="Убрал вывод в консоль" />
-    <MESSAGE value="Сделал выполнение запроса к базе внутри транзакции" />
-    <MESSAGE value="Подправил роут" />
-    <MESSAGE value="Изменил название функции update на change" />
-    <MESSAGE value="Добавил к запросу вывод количество студентов" />
-    <MESSAGE value="Добавил алиасы для корректной отправки на фронт" />
-    <MESSAGE value="Добавил фукнции получения списка таблиц и списка колонок в таблице" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил фукнции получения списка таблиц и списка колонок в таблице" />
+    <MESSAGE value="Добавил схему таблицы" />
+    <MESSAGE value="Изменил функцию получения списка таблиц" />
+    <option name="LAST_COMMIT_MESSAGE" value="Изменил функцию получения списка таблиц" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/complectation_back$parser_service.coverage" NAME="parser_service Coverage Results" MODIFIED="1684596002824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/complectation_back$parser_service.coverage" NAME="parser_service Coverage Results" MODIFIED="1685377635810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

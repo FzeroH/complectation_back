@@ -4,7 +4,8 @@ const CompanySchema = {
         {
             title: 'ID',
             name:'company_id',
-            type: 'number'
+            type: 'number',
+            disabled: true
         },
         {
             title: 'Название издательства',

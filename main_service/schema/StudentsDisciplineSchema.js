@@ -4,22 +4,8 @@ const StudentsGroupSchema = {
         {
             title: 'ID',
             name:'students_discipline_id',
-            type: 'number'
-        },
-        {
-            title: 'Предмет',
-            name:'discipline_name',
-            type: 'string'
-        },
-        {
-            title: 'Преподаватель',
-            name:'users_name',
-            type: 'string'
-        },
-        {
-            title: 'Группа',
-            name:'students_group_name',
-            type: 'string'
+            type: 'number',
+            disabled: true
         },
         {
             title: 'Семестр',
