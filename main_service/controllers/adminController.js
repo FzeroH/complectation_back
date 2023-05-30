@@ -133,10 +133,8 @@ module.exports.getColumns = async function (req, res){
                 // Если columns является массивом, добавляем каждый элемент отдельно
                 for (const column of columns) {
                     const { title, name, type, list } = column;
-                    console.log(typeof list, typeof list === 'function')
                     if (typeof list === 'function') {
                         const elements = await list(); // Вызываем функцию list и получаем результат
-                        console.log(elements)
                         tableHeaders.push({
                             title,
                             name,
