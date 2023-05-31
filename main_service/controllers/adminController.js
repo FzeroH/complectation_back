@@ -93,30 +93,6 @@ module.exports.getTables = async function (req, res){
     }
 };
 
-// module.exports.getColumns = async function (req, res){
-//     const { tableName } = req.query
-//     try {
-//         const tableSchema = schemas[tableName];
-//         if (!tableSchema) {
-//             throw new Error(`Schema not found for table: ${tableName}`);
-//         }
-//         const { tableHeaders } = tableSchema;
-//
-//         tableHeaders.push({
-//                 title: 'Роль пользователя',
-//                 name:'role_id',
-//                 type: 'number',
-//                 list: elementsName
-//         })
-//         res.json(tableHeaders);
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({
-//             message: 'Произошла ошибка'
-//         });
-//     }
-// };
-
 module.exports.getColumns = async function (req, res){
     const { tableName } = req.query;
     try {
