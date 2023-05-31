@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Убрал вывод в консоль" />
+    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Убрал вывод в консоль">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/adminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/adminController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/publicationController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/publicationController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/routes/publication.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/routes/publication.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,13 +126,7 @@
       <workItem from="1685279699333" duration="189000" />
       <workItem from="1685289218703" duration="6570000" />
       <workItem from="1685479686301" duration="58000" />
-    </task>
-    <task id="LOCAL-00028" summary="Добавил PyJWT">
-      <created>1683476424836</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1683476424836</updated>
+      <workItem from="1685556314152" duration="1036000" />
     </task>
     <task id="LOCAL-00029" summary="Подключил проверку JWT токена">
       <created>1683476448435</created>
@@ -465,7 +464,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685479732671</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Убрал вывод в консоль">
+      <created>1685556500789</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1685556500789</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
