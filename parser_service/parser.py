@@ -75,7 +75,7 @@ def parser(filename: str, filepath: str):
                 if not data['publication_title']:
                     continue
 
-                values = (6, data['publication_author'], data['publication_title'], data['publication_year'], data['publication_cost'])
+                values = (2, data['publication_author'], data['publication_title'], data['publication_year'], data['publication_cost'])
                 # TODO: Убрать захардкоженный номер издательства в запросе!!!!!
                 curs.execute(insert_query, values)
     except Exception as e:
