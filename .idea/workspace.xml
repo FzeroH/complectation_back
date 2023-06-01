@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Убрал закомментированную функцию">
+    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/controllers/adminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/adminController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_service/controllers/publicationController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/publicationController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/controllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/requestController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/routes/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/routes/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/routes/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/routes/request.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser_service/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser_service/parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser_service/parser_service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/parser_service/parser_service.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,42 +128,7 @@
       <workItem from="1685289218703" duration="6570000" />
       <workItem from="1685479686301" duration="58000" />
       <workItem from="1685556314152" duration="4731000" />
-      <workItem from="1685636375122" duration="7439000" />
-    </task>
-    <task id="LOCAL-00031" summary="Изменил название функции и убрал проверку на статус админа">
-      <created>1683476585513</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1683476585513</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Изменил роуты">
-      <created>1683479369310</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1683479369310</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Добавил роли пользователя">
-      <created>1683651111470</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1683651111470</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Исправил функцию обновления роли пользователя">
-      <created>1683651239865</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1683651239866</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Явно указал используемый алгоритм">
-      <created>1683651289986</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1683651289986</updated>
+      <workItem from="1685636375122" duration="8180000" />
     </task>
     <task id="LOCAL-00036" summary="Добавил функцию проверки роли администратора у пользователя">
       <created>1683651331017</created>
@@ -479,7 +438,42 @@
       <option name="project" value="LOCAL" />
       <updated>1685557388783</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="Изменил названия эндпоинтов">
+      <created>1685646791419</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1685646791419</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Изменил названия переменных">
+      <created>1685646814492</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1685646814492</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Добавил возможность обнавления и записи данных в таблицу">
+      <created>1685646832642</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1685646832642</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Изменил вывод публикаций со всех на 30 из списка">
+      <created>1685646872577</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1685646872577</updated>
+    </task>
+    <task id="LOCAL-00084" summary="1">
+      <created>1685646894443</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1685646894443</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -500,11 +494,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил функции обновления таблиц и роуты к ним" />
-    <MESSAGE value="Изменил TODO" />
-    <MESSAGE value="Изменил функцию создания запроса. Доавбил фукнцию создания заказа" />
-    <MESSAGE value="Отрефакторил getPublications" />
-    <MESSAGE value="Добавил credentials в cors" />
     <MESSAGE value="Добавил библиотеку для генерации docx файлов" />
     <MESSAGE value="Добавил шаблон для генерации документа" />
     <MESSAGE value="Добавил функцию и endpoint для генерации и выгрузки файла с сервера" />
@@ -525,7 +514,12 @@
     <MESSAGE value="Убрал вывод в консоль" />
     <MESSAGE value="убрал отдельно функцию сортировки по году публикации" />
     <MESSAGE value="Убрал закомментированную функцию" />
-    <option name="LAST_COMMIT_MESSAGE" value="Убрал закомментированную функцию" />
+    <MESSAGE value="Изменил названия эндпоинтов" />
+    <MESSAGE value="Изменил названия переменных" />
+    <MESSAGE value="Добавил возможность обнавления и записи данных в таблицу" />
+    <MESSAGE value="Изменил вывод публикаций со всех на 30 из списка" />
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/complectation_back$parser_service.coverage" NAME="parser_service Coverage Results" MODIFIED="1685644429354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

@@ -43,3 +43,21 @@ module.exports.getPublicationType = async function (req, res) {
         })
     }
 };
+
+module.exports.searchPublications = async function (req, res) {
+    const { str } = req.body
+    try {
+        const result = await db.many(`select publication_id, publication_author, publication_title, company_name, 
+                                        publication_year from publication as pb  
+                                        join company on pb.company_id = company.company_id
+                                      where (publication_author|| ' ' || publication_title|| ' ' || company_name || ' ' || publication_year) 
+                                      ILIKE '%' || $1 || '%';`,
+            [str])
+        return res.status(200).json(result)
+    } catch (e) {
+        console.error(e)
+        res.status(500).json({
+            message: "Произошла ошибка"
+        })
+    }
+};
