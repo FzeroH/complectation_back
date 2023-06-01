@@ -8,7 +8,7 @@ module.exports.getPublications = async function (req, res) {
       const result = await db.many(`
           SELECT publication_id as id, publication_author, publication_title, publication_year, publication_cost, company_name
           FROM publication JOIN company ON publication.company_id = company.company_id
-          ORDER BY ${field} ${direction};`, [direction, field])
+          ORDER BY ${field} ${direction} LIMIT 30;`, [direction, field])
       return res.status(200).json(result)
   } catch (e) {
       console.error(e)
