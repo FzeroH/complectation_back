@@ -142,7 +142,7 @@ module.exports.getColumns = async function (req, res){
     }
 };
 
-
+// ===== Получение списков =====
 module.exports.getUsers = async function (req, res){
     const { sorting : sort } = req.query
     const field = sort?.field ?? 'users_id';
@@ -235,30 +235,157 @@ module.exports.getDiscipline = async function (req, res){
     }
 }
 
-module.exports.registration =  async function (req, res) {
-    const { users_first_name, users_last_name, users_email, users_password } = req.body;
-    console.log(req.body);
+// ===== Обновление данных =====
+module.exports.changeUser = async function (req, res){
+    const { payload : pd } = req.body
     try {
-        const candidate = await db.oneOrNone('SELECT users_id FROM users WHERE users_email = $1', [users_email]);
-
-        if (candidate) {
-            return res.status(400).json({ error: 'Пользователь уже зарегистрирован' });
-        }
-
-        const hashedPassword = await bcrypt.hash(users_password, 10);
-
-        await db.none(
-            'INSERT INTO users (users_first_name, users_last_name, users_email, users_password, role_id) VALUES ($1, $2, $3, $4, $5)',
-            [users_first_name, users_last_name, users_email, hashedPassword, process.env.DEFAULT_ROLE]
-        );
-        res.status(200).json({
-            message:"Успешно"
-        })
-
+        await db.none(`UPDATE public.users
+                       SET role_id=$2, users_first_name=$3, users_last_name=$4, users_email=$5
+                       WHERE users_id=$1;`, { pd });
+        res.status(200).json("Успешно");
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Произошла ошибка' });
+        res.status(500).json({
+            message: 'Произошла ошибка'
+        });
     }
-};
+}
+
+module.exports.changeStudentsDiscipline = async function (req, res){
+    const { payload : pd } = req.body
+    try {
+        await db.none(`UPDATE public.students_discipline 
+                SET discipline_id=$2, students_group_id=$3, users_id=$4, 
+                    students_discipline_semester=$5
+                WHERE students_discipline_id=$1;`, { pd });
+        res.status(200).json("Успешно");
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Произошла ошибка'
+        });
+    }
+}
+
+module.exports.changeCompany = async function (req, res){
+    const { payload : pd } = req.body
+    try {
+        await db.none(`UPDATE public.discipline
+                       SET company_name=$2
+                       WHERE company_id = $1;`, { pd });
+        res.status(200).json("Успешно");
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Произошла ошибка'
+        });
+    }
+}
+
+module.exports.changeStudentsGroup = async function (req, res){
+    const { payload : pd } = req.body
+    try {
+        await db.none(`UPDATE public.students_group
+                       SET cafedra_id=$2, students_group_type_id=$3, 
+                           students_group_name=$4, students_group_count=$5
+                       WHERE students_group_id=$1;`, { pd });
+        res.status(200).json("Успешно");
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Произошла ошибка'
+        });
+    }
+}
+
+module.exports.changeDiscipline = async function (req, res){
+    const { payload } = req.body
+
+    try {
+        await db.none(`UPDATE public.discipline
+                       SET cafedra_id=$2, discipline_name=$3
+                       WHERE discipline_id = $1;`, { payload });
+        res.status(200).json("Успешно");
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Произошла ошибка'
+        });
+    }
+}
+
+// ===== Добавление данных =====
+module.exports.addUser = async function (req, res) {
+    const { payload: pd } = req.body;
+    try {
+        await db.none(`INSERT INTO public.users (role_id, users_first_name, users_last_name, users_email)
+                       VALUES ($1, $2, $3, $4);`, [pd.role_id, pd.users_first_name, pd.users_last_name, pd.users_email]);
+        res.status(200).json("Успешно");
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Произошла ошибка'
+        });
+    }
+}
+
+module.exports.addStudentsDiscipline = async function (req, res) {
+    const { payload: pd } = req.body;
+    try {
+        await db.none(`INSERT INTO public.students_discipline 
+                       (discipline_id, students_group_id, users_id, students_discipline_semester)
+                       VALUES ($1, $2, $3, $4);`, [pd.discipline_id, pd.students_group_id, pd.users_id, pd.students_discipline_semester]);
+        res.status(200).json("Успешно");
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Произошла ошибка'
+        });
+    }
+}
+
+module.exports.addCompany = async function (req, res) {
+    const { payload: pd } = req.body;
+    try {
+        await db.none(`INSERT INTO public.company (company_name)
+                       VALUES ($1);`, [pd.company_name]);
+        res.status(200).json("Успешно");
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Произошла ошибка'
+        });
+    }
+}
+
+module.exports.addStudentsGroup = async function (req, res) {
+    const { payload: pd } = req.body;
+    try {
+        await db.none(`INSERT INTO public.students_group 
+                       (cafedra_id, students_group_type_id, students_group_name, students_group_count)
+                       VALUES ($1, $2, $3, $4);`, [pd.cafedra_id, pd.students_group_type_id, pd.students_group_name, pd.students_group_count]);
+        res.status(200).json("Успешно");
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Произошла ошибка'
+        });
+    }
+}
+
+module.exports.addDiscipline = async function (req, res) {
+    const { payload } = req.body;
+    try {
+        await db.none(`INSERT INTO public.discipline (cafedra_id, discipline_name)
+                       VALUES ($1, $2);`, [payload.cafedra_id, payload.discipline_name]);
+        res.status(200).json("Успешно");
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Произошла ошибка'
+        });
+    }
+}
+
 
 
