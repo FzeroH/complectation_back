@@ -1,4 +1,4 @@
-const { db } = require('../configs/postgresConfig');
+const { db } = require('../../main_service/configs/postgresConfig');
 
 module.exports.authenticateAdmin = async function (req, res, next) {
     const { userId } = req.user;

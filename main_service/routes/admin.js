@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/adminController');
-const { authenticateToken } = require('../middleware/authenticateToken');
-const { authenticateAdmin } = require('../middleware/authenticateAdmin');
 
 router.get('/table-list', controller.getTables);
 

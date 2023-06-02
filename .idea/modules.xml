@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/complectation_back.iml" filepath="$PROJECT_DIR$/complectation_back.iml" />
       <module fileurl="file://$PROJECT_DIR$/main_service.iml" filepath="$PROJECT_DIR$/main_service.iml" />
       <module fileurl="file://$PROJECT_DIR$/parser_service/parser_service.iml" filepath="$PROJECT_DIR$/parser_service/parser_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/proxy_service.iml" filepath="$PROJECT_DIR$/proxy_service.iml" />
     </modules>
   </component>
 </project>
