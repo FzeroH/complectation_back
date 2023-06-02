@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Убрал проверку роли пользователя">
+    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Отредактировал путь до статических файлов">
       <change afterPath="$PROJECT_DIR$/proxy_service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +46,7 @@
     "javascript.nodejs.core.library.configured.version": "16.15.0",
     "javascript.nodejs.core.library.typings.version": "16.18.34",
     "jdk.selected.JAVA_MODULE": "jbr-11",
-    "last_opened_file_path": "C:/Users/sauru/Desktop/ВКР/ИС Комплектация/complectation_back/proxy_service",
+    "last_opened_file_path": "C:/Users/sauru/Desktop/ВКР/ИС Комплектация/complectation_back/proxy_service/routes",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -70,19 +68,20 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sauru\Desktop\ВКР\ИС Комплектация\complectation_back\proxy_service\routes" />
       <recent name="C:\Users\sauru\Desktop\ВКР\ИС Комплектация\complectation_back\proxy_service" />
       <recent name="C:\Users\sauru\Desktop\ВКР\ИС Комплектация\complectation_back\main_service\doc_templates" />
       <recent name="$PROJECT_DIR$/admin_service" />
       <recent name="$PROJECT_DIR$/parser_service" />
-      <recent name="$PROJECT_DIR$/auth_service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sauru\Desktop\ВКР\ИС Комплектация\complectation_back\proxy_service" />
       <recent name="$PROJECT_DIR$/main_service" />
       <recent name="$PROJECT_DIR$/main_service/controllers" />
       <recent name="$PROJECT_DIR$/parser_service/priselist" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.go">
+  <component name="RunManager" selected="FastAPI.parser_service">
     <configuration name="parser_service" type="Python.FastAPI">
       <option name="file" value="$PROJECT_DIR$/parser_service/main.py" />
       <module name="parser_service" />
@@ -97,16 +96,6 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="go" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/proxy_service/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="go" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/proxy_service/package.json" />
       <command value="run" />
@@ -119,7 +108,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.go" />
         <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
@@ -159,21 +147,7 @@
       <workItem from="1685479686301" duration="58000" />
       <workItem from="1685556314152" duration="4731000" />
       <workItem from="1685636375122" duration="8945000" />
-      <workItem from="1685714630696" duration="2216000" />
-    </task>
-    <task id="LOCAL-00038" summary="Добавил опции для функции декодирования">
-      <created>1683656522419</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1683656522419</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Добавил рабочую версию кода отправки данных в бд">
-      <created>1683656610168</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1683656610168</updated>
+      <workItem from="1685714630696" duration="6736000" />
     </task>
     <task id="LOCAL-00040" summary="Добавил проверку роли пользователя">
       <created>1683656638609</created>
@@ -504,7 +478,21 @@
       <option name="project" value="LOCAL" />
       <updated>1685648232630</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Убрал middleware">
+      <created>1685717275543</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1685717275543</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Отредактировал путь до статических файлов">
+      <created>1685717299651</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1685717299651</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -525,8 +513,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил функцию и endpoint для генерации и выгрузки файла с сервера" />
-    <MESSAGE value="Изменил endpoint" />
     <MESSAGE value="Добавил фильтр публикаций по году" />
     <MESSAGE value="Добавил endpoint фильтра публикаций по году" />
     <MESSAGE value="Добавил функции создания заказа, получения списка заявок (всего и по id пользователя), фильтрации заявок по издательствам" />
@@ -550,9 +536,11 @@
     <MESSAGE value="1" />
     <MESSAGE value="Добавил поиск по фрагментам слова" />
     <MESSAGE value="Убрал проверку роли пользователя" />
-    <option name="LAST_COMMIT_MESSAGE" value="Убрал проверку роли пользователя" />
+    <MESSAGE value="Убрал middleware" />
+    <MESSAGE value="Отредактировал путь до статических файлов" />
+    <option name="LAST_COMMIT_MESSAGE" value="Отредактировал путь до статических файлов" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/complectation_back$parser_service.coverage" NAME="parser_service Coverage Results" MODIFIED="1685648114567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/complectation_back$parser_service.coverage" NAME="parser_service Coverage Results" MODIFIED="1685717925537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
