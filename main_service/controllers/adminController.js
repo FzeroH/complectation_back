@@ -136,7 +136,6 @@ module.exports.getColumns = async function (req, res) {
         }
 
         res.json(uniqueTableHeaders);
-        console.log(uniqueTableHeaders);
     } catch (error) {
         console.error(error);
         res.status(500).json({
