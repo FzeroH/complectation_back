@@ -10,7 +10,7 @@ const StudentsGroupSchema = {
         {
             title: 'Семестр',
             name:'students_discipline_semester',
-            type: 'integer'
+            type: 'number'
         }
     ]
 };

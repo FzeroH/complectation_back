@@ -15,7 +15,7 @@ const StudentsGroupSchema = {
         {
             title: 'Кол-во студентов',
             name:'students_group_count',
-            type: 'integer'
+            type: 'number'
         }
     ]
 };
