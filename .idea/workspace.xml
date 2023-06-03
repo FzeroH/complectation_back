@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Отредактировал путь до статических файлов">
-      <change afterPath="$PROJECT_DIR$/proxy_service.iml" afterDir="false" />
+    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Добавил все необходимые на данный момент функции в промежуточный сервис">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/adminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/adminController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/publicationController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/publicationController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/routes/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/routes/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/controllers/adminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/adminController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/controllers/publicationController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/publicationController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/controllers/studentsDisciplineController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/studentsDisciplineController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/routes/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/routes/admin.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,37 +41,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "javascript.nodejs.core.library.configured.version": "16.15.0",
-    "javascript.nodejs.core.library.typings.version": "16.18.34",
-    "jdk.selected.JAVA_MODULE": "jbr-11",
-    "last_opened_file_path": "C:/Users/sauru/Desktop/ВКР/ИС Комплектация/complectation_back/proxy_service/routes",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "E:\\IntelliJ IDEA 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.15.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.34&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;jbr-11&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sauru/Desktop/ВКР/ИС Комплектация/complectation_back/proxy_service/routes&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\IntelliJ IDEA 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\sauru\Desktop\ВКР\ИС Комплектация\complectation_back\proxy_service\routes" />
@@ -147,14 +153,8 @@
       <workItem from="1685479686301" duration="58000" />
       <workItem from="1685556314152" duration="4731000" />
       <workItem from="1685636375122" duration="8945000" />
-      <workItem from="1685714630696" duration="6736000" />
-    </task>
-    <task id="LOCAL-00040" summary="Добавил проверку роли пользователя">
-      <created>1683656638609</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1683656638609</updated>
+      <workItem from="1685714630696" duration="8181000" />
+      <workItem from="1685775300518" duration="16267000" />
     </task>
     <task id="LOCAL-00041" summary="Соединил сервисы авторизации и администрирования в один">
       <created>1683805018785</created>
@@ -492,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685717299651</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="Добавил все необходимые на данный момент функции в промежуточный сервис">
+      <created>1685721572375</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1685721572375</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,7 +520,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил фильтр публикаций по году" />
     <MESSAGE value="Добавил endpoint фильтра публикаций по году" />
     <MESSAGE value="Добавил функции создания заказа, получения списка заявок (всего и по id пользователя), фильтрации заявок по издательствам" />
     <MESSAGE value="Изменил вывод поля с id роли на название" />
@@ -538,7 +544,8 @@
     <MESSAGE value="Убрал проверку роли пользователя" />
     <MESSAGE value="Убрал middleware" />
     <MESSAGE value="Отредактировал путь до статических файлов" />
-    <option name="LAST_COMMIT_MESSAGE" value="Отредактировал путь до статических файлов" />
+    <MESSAGE value="Добавил все необходимые на данный момент функции в промежуточный сервис" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил все необходимые на данный момент функции в промежуточный сервис" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/complectation_back$parser_service.coverage" NAME="parser_service Coverage Results" MODIFIED="1685717925537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

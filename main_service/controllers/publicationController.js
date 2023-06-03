@@ -1,14 +1,18 @@
 const { db } = require('../configs/postgresConfig')
 
 module.exports.getPublications = async function (req, res) {
-    const { sorting : sort } = req.query
-    const field = sort?.field ?? 'publication_year';
-    const direction = sort?.direction ?? 'desc';
+    const { field : field_query, direction: dr, search } = req.query
+    const field = field_query ?? 'publication_year';
+    const direction = dr ?? 'desc';
   try {
-      const result = await db.many(`
+        const where_query = search? `WHERE (publication_author|| ' ' || publication_title|| ' ' || company_name || ' ' || publication_year)
+              ILIKE '%' || $1 || '%'` : ''
+        const result = await db.manyOrNone(`
           SELECT publication_id as id, publication_author, publication_title, publication_year, publication_cost, company_name
-          FROM publication JOIN company ON publication.company_id = company.company_id
-          ORDER BY ${field} ${direction} LIMIT 30;`, [direction, field])
+          FROM publication JOIN company ON publication.company_id = company.company_id ${where_query}
+          ORDER BY ${field} ${direction} LIMIT 30;`, [search])
+        const totalCount = await db.one(`SELECT COUNT(*) FROM publication`)
+      result.push({totalCount: totalCount.count})
       return res.status(200).json(result)
   } catch (e) {
       console.error(e)

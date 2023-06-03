@@ -13,8 +13,9 @@ module.exports.getTables = async function (req, res) {
 }
 
 module.exports.getColumns = async function (req, res) {
+    const { tableName } = req.query
     try {
-        const response = await proxy_main.get('/api/admin/table-columns');
+        const response = await proxy_main.get(`/api/admin/table-columns/?tableName=${tableName}`);
         res.status(200).json(response.data);
     } catch (error) {
         console.error(error);
@@ -25,8 +26,11 @@ module.exports.getColumns = async function (req, res) {
 };
 
 module.exports.getUsers = async function (req, res) {
+    const { sorting : sort } = req.query
+    const field = sort?.field ?? 'users_id';
+    const direction = sort?.direction ?? 'asc';
     try {
-        const response = await proxy_main.get('/api/admin/users');
+        const response = await proxy_main.get(`/api/admin/users/?field=${field}&direction=${direction}`);
         res.status(200).json(response.data);
     } catch (error) {
         console.error(error);
@@ -49,9 +53,8 @@ module.exports.addUser = async function (req, res) {
 };
 
 module.exports.changeUser = async function (req, res) {
-    const userId = req.params.id;
     try {
-        const response = await proxy_main.put(`/api/admin/users/${userId}`, req.body);
+        const response = await proxy_main.put(`/api/admin/users`, req.body);
         res.status(200).json(response.data);
     } catch (error) {
         console.error(error);
@@ -62,8 +65,12 @@ module.exports.changeUser = async function (req, res) {
 };
 
 module.exports.getStudentsDiscipline = async function (req, res) {
+    const { sorting : sort } = req.query
+    const field = sort?.field ?? 'students_discipline_id';
+    const direction = sort?.direction ?? 'asc';
+
     try {
-        const response = await proxy_main.get('/api/admin/students_discipline');
+        const response = await proxy_main.get(`/api/admin/students_discipline/?field=${field}&direction=${direction}`);
         res.status(200).json(response.data);
     } catch (error) {
         console.error(error);
@@ -86,9 +93,8 @@ module.exports.addStudentsDiscipline = async function (req, res) {
 };
 
 module.exports.changeStudentsDiscipline = async function (req, res) {
-    const studentsDisciplineId = req.params.id;
     try {
-        const response = await proxy_main.put(`/api/admin/students_discipline/${studentsDisciplineId}`, req.body);
+        const response = await proxy_main.put(`/api/admin/students_discipline`, req.body);
         res.status(200).json(response.data);
     } catch (error) {
         console.error(error);
@@ -99,8 +105,12 @@ module.exports.changeStudentsDiscipline = async function (req, res) {
 };
 
 module.exports.getCompany = async function (req, res) {
+    const { sorting : sort } = req.query
+    const field = sort?.field ?? 'company_id';
+    const direction = sort?.direction ?? 'asc';
+
     try {
-        const result = await proxy_main.get('/api/admin/company');
+        const result = await proxy_main.get(`/api/admin/company/?field=${field}&direction=${direction}`);
         res.status(200).json(result.data);
     } catch (error) {
         console.error(error);
@@ -125,9 +135,8 @@ module.exports.addCompany = async function (req, res) {
 
 module.exports.changeCompany = async function (req, res) {
     try {
-        const { id } = req.params;
         const { body } = req;
-        const result = await proxy_main.put(`/api/admin/company/${id}`, body);
+        const result = await proxy_main.put(`/api/admin/company`, body);
         res.status(200).json(result.data);
     } catch (error) {
         console.error(error);
@@ -138,8 +147,12 @@ module.exports.changeCompany = async function (req, res) {
 }
 
 module.exports.getStudentsGroup = async function (req, res) {
+    const { sorting : sort } = req.query
+    const field = sort?.field ?? 'students_group_id';
+    const direction = sort?.direction ?? 'asc';
+
     try {
-        const result = await proxy_main.get('/api/admin/students_group');
+        const result = await proxy_main.get(`/api/admin/students_group/?field=${field}&direction=${direction}`);
         res.status(200).json(result.data);
     } catch (error) {
         console.error(error);
@@ -164,9 +177,8 @@ module.exports.addStudentsGroup = async function (req, res) {
 
 module.exports.changeStudentsGroup = async function (req, res) {
     try {
-        const { id } = req.params;
         const { body } = req;
-        const result = await proxy_main.put(`/api/admin/students_group/${id}`, body);
+        const result = await proxy_main.put(`/api/admin/students_group`, body);
         res.status(200).json(result.data);
     } catch (error) {
         console.error(error);
@@ -177,8 +189,12 @@ module.exports.changeStudentsGroup = async function (req, res) {
 }
 
 module.exports.getDiscipline = async function (req, res) {
+    const { sorting : sort } = req.query
+    const field = sort?.field ?? 'discipline_id';
+    const direction = sort?.direction ?? 'asc';
+
     try {
-        const result = await proxy_main.get('/api/admin/discipline');
+        const result = await proxy_main.get(`/api/admin/discipline/?field=${field}&direction=${direction}`);
         res.status(200).json(result.data);
     } catch (error) {
         console.error(error);
@@ -203,9 +219,8 @@ module.exports.addDiscipline = async function (req, res) {
 
 module.exports.changeDiscipline = async function (req, res) {
     try {
-        const { id } = req.params;
         const { body } = req;
-        const result = await proxy_main.put(`/api/admin/discipline/${id}`, body);
+        const result = await proxy_main.put(`/api/admin/discipline`, body);
         res.status(200).json(result.data);
     } catch (error) {
         console.error(error);

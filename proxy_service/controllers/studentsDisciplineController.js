@@ -15,8 +15,9 @@ module.exports.getDiscipline = async function (req, res) {
 
 module.exports.getStudentGroupsByDiscipline = async function (req, res) {
     try {
-        const disciplineId = req.query.disciplineId;
-        const response = await proxy_main.get(`/api/student_group?disciplineId=${disciplineId}`);
+        const disciplineId = req.query.id;
+        console.log(disciplineId)
+        const response = await proxy_main.get(`/api/student_group/?id=${disciplineId}`);
         const studentGroups = response.data;
         res.status(200).json(studentGroups);
     } catch (error) {
@@ -29,8 +30,8 @@ module.exports.getStudentGroupsByDiscipline = async function (req, res) {
 
 module.exports.getGroupInfo = async function (req, res) {
     try {
-        const groupId = req.query.groupId;
-        const response = await proxy_main.get(`/api/group_info?groupId=${groupId}`);
+        const { discipline_id,student_group_id } = req.query;
+        const response = await proxy_main.get(`/api/group_info?discipline_id=${discipline_id}&student_group_id=${student_group_id}`);
         const groupInfo = response.data;
         res.status(200).json(groupInfo);
     } catch (error) {

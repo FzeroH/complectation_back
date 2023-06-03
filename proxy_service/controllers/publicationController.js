@@ -1,22 +1,25 @@
 const { proxy_main } = require('../config/axios.config');
 
 module.exports.getPublications = async function (req, res) {
+    const { field : field_query, direction: dr, search } = req.query
+    const field = field_query ?? 'publication_year';
+    const direction = dr ?? 'desc';
     try {
-        const response = await proxy_main.get('/api/publications');
+        const response = await proxy_main.get(`/api/publications/?field=${field}&direction=${direction}&search=${search}`);
         const publications = response.data;
         res.status(200).json(publications);
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            message: 'Произошла ошибка',
+            message: `Произошла ошибка: ${error}`,
         });
     }
 }
 
 module.exports.getPublicationById = async function (req, res) {
     try {
-        const publicationId = req.params.id;
-        const response = await proxy_main.get(`/api/publication/${publicationId}`);
+        const id = req.query.id;
+        const response = await proxy_main.get(`/api/publication/?id=${id}`);
         const publication = response.data;
         res.status(200).json(publication);
     } catch (error) {

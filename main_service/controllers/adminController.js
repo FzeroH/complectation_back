@@ -100,7 +100,7 @@ module.exports.getColumns = async function (req, res){
         if (!tableSchema) {
             throw new Error(`Schema not found for table: ${tableName}`);
         }
-        const { tableHeaders } = tableSchema;
+        let { tableHeaders } = tableSchema;
 
         // Добавляем элементы из columnSchemas, если они доступны
         if (columnSchemas.hasOwnProperty(tableName)) {
@@ -134,6 +134,9 @@ module.exports.getColumns = async function (req, res){
             }
         }
         res.json(tableHeaders);
+        if (columnSchemas.hasOwnProperty(tableName)) {
+            tableHeaders.pop()
+        }
     } catch (error) {
         console.error(error);
         res.status(500).json({
@@ -144,9 +147,7 @@ module.exports.getColumns = async function (req, res){
 
 // ===== Получение списков =====
 module.exports.getUsers = async function (req, res){
-    const { sorting : sort } = req.query
-    const field = sort?.field ?? 'users_id';
-    const direction = sort?.direction ?? 'asc';
+    const {field, direction} = req.query
 
     try {
         const result = await db.many(`SELECT users_id, users_first_name, users_last_name, users_email, users.role_id 
@@ -161,9 +162,7 @@ module.exports.getUsers = async function (req, res){
 };
 
 module.exports.getStudentsDiscipline = async function (req, res){
-    const { sorting : sort } = req.query
-    const field = sort?.field ?? 'students_discipline_id';
-    const direction = sort?.direction ?? 'asc';
+    const {field, direction} = req.query
 
     try {
         const result = await db.many(`SELECT students_discipline_id, sd.discipline_id, sd.students_group_id,
@@ -182,9 +181,7 @@ module.exports.getStudentsDiscipline = async function (req, res){
 }
 
 module.exports.getCompany = async function (req, res){
-    const { sorting : sort } = req.query
-    const field = sort?.field ?? 'company_id';
-    const direction = sort?.direction ?? 'asc';
+    const {field, direction} = req.query
 
     try {
         const result = await db.many(`SELECT company_id , company_name FROM company 
@@ -199,9 +196,7 @@ module.exports.getCompany = async function (req, res){
 }
 
 module.exports.getStudentsGroup = async function (req, res){
-    const { sorting : sort } = req.query
-    const field = sort?.field ?? 'students_group_id';
-    const direction = sort?.direction ?? 'asc';
+    const {field, direction} = req.query
 
     try {
         const result = await db.many(`SELECT students_group_id, sg.cafedra_id, sg.students_group_type_id, students_group_name, students_group_count
@@ -218,9 +213,7 @@ module.exports.getStudentsGroup = async function (req, res){
 }
 
 module.exports.getDiscipline = async function (req, res){
-    const { sorting : sort } = req.query
-    const field = sort?.field ?? 'discipline_id';
-    const direction = sort?.direction ?? 'asc';
+    const {field, direction} = req.query
 
     try {
         const result = await db.many(`SELECT discipline_id, sd.cafedra_id, discipline_name FROM discipline as sd
@@ -237,11 +230,11 @@ module.exports.getDiscipline = async function (req, res){
 
 // ===== Обновление данных =====
 module.exports.changeUser = async function (req, res){
-    const { payload : pd } = req.body
+    const { users_id, role_id, users_first_name, users_last_name, users_email } = req.body
     try {
         await db.none(`UPDATE public.users
                        SET role_id=$2, users_first_name=$3, users_last_name=$4, users_email=$5
-                       WHERE users_id=$1;`, { pd });
+                       WHERE users_id=$1;`, [users_id, role_id, users_first_name, users_last_name, users_email]);
         res.status(200).json("Успешно");
     } catch (error) {
         console.error(error);
@@ -252,12 +245,13 @@ module.exports.changeUser = async function (req, res){
 }
 
 module.exports.changeStudentsDiscipline = async function (req, res){
-    const { payload : pd } = req.body
+    const { students_discipline_id ,discipline_id, students_group_id, users_id, students_discipline_semester } = req.body
     try {
         await db.none(`UPDATE public.students_discipline 
                 SET discipline_id=$2, students_group_id=$3, users_id=$4, 
                     students_discipline_semester=$5
-                WHERE students_discipline_id=$1;`, { pd });
+                WHERE students_discipline_id=$1;`,
+            [students_discipline_id ,discipline_id, students_group_id, users_id, students_discipline_semester]);
         res.status(200).json("Успешно");
     } catch (error) {
         console.error(error);
@@ -268,11 +262,11 @@ module.exports.changeStudentsDiscipline = async function (req, res){
 }
 
 module.exports.changeCompany = async function (req, res){
-    const { payload : pd } = req.body
+    const { company_id, company_name } = req.body
     try {
-        await db.none(`UPDATE public.discipline
+        await db.none(`UPDATE public.company
                        SET company_name=$2
-                       WHERE company_id = $1;`, { pd });
+                       WHERE company_id = $1;`, [company_id, company_name ]);
         res.status(200).json("Успешно");
     } catch (error) {
         console.error(error);
@@ -283,12 +277,13 @@ module.exports.changeCompany = async function (req, res){
 }
 
 module.exports.changeStudentsGroup = async function (req, res){
-    const { payload : pd } = req.body
+    const { students_group_id, cafedra_id, students_group_type_id, students_group_name, students_group_count } = req.body
     try {
         await db.none(`UPDATE public.students_group
                        SET cafedra_id=$2, students_group_type_id=$3, 
                            students_group_name=$4, students_group_count=$5
-                       WHERE students_group_id=$1;`, { pd });
+                       WHERE students_group_id=$1;`,
+            [students_group_id, cafedra_id, students_group_type_id, students_group_name, students_group_count]);
         res.status(200).json("Успешно");
     } catch (error) {
         console.error(error);
@@ -299,12 +294,12 @@ module.exports.changeStudentsGroup = async function (req, res){
 }
 
 module.exports.changeDiscipline = async function (req, res){
-    const { payload } = req.body
+    const { discipline_id, cafedra_id, discipline_name } = req.body
 
     try {
         await db.none(`UPDATE public.discipline
                        SET cafedra_id=$2, discipline_name=$3
-                       WHERE discipline_id = $1;`, { payload });
+                       WHERE discipline_id = $1;`, [discipline_id, cafedra_id, discipline_name]);
         res.status(200).json("Успешно");
     } catch (error) {
         console.error(error);
@@ -316,25 +311,38 @@ module.exports.changeDiscipline = async function (req, res){
 
 // ===== Добавление данных =====
 module.exports.addUser = async function (req, res) {
-    const { payload: pd } = req.body;
+    const { users_first_name, users_last_name, users_email, users_password } = req.body;
+    console.log(req.body);
     try {
-        await db.none(`INSERT INTO public.users (role_id, users_first_name, users_last_name, users_email)
-                       VALUES ($1, $2, $3, $4);`, [pd.role_id, pd.users_first_name, pd.users_last_name, pd.users_email]);
-        res.status(200).json("Успешно");
+        const candidate = await db.oneOrNone('SELECT users_id FROM users WHERE users_email = $1', [users_email]);
+
+        if (candidate) {
+            return res.status(400).json({ error: 'Пользователь уже зарегистрирован' });
+        }
+
+        const hashedPassword = await bcrypt.hash(users_password, 10);
+
+        const newUser = await db.none(
+            'INSERT INTO users (users_first_name, users_last_name, users_email, users_password, role_id) VALUES ($1, $2, $3, $4, $5)',
+            [users_first_name, users_last_name, users_email, hashedPassword, process.env.DEFAULT_ROLE]
+        );
+        res.status(200).json({
+            message:"Успешно"
+        })
+
     } catch (error) {
         console.error(error);
-        res.status(500).json({
-            message: 'Произошла ошибка'
-        });
+        res.status(500).json({ error: 'Произошла ошибка' });
     }
-}
+};
 
 module.exports.addStudentsDiscipline = async function (req, res) {
-    const { payload: pd } = req.body;
+    const { discipline_id, students_group_id, users_id, students_discipline_semester } = req.body;
     try {
         await db.none(`INSERT INTO public.students_discipline 
                        (discipline_id, students_group_id, users_id, students_discipline_semester)
-                       VALUES ($1, $2, $3, $4);`, [pd.discipline_id, pd.students_group_id, pd.users_id, pd.students_discipline_semester]);
+                       VALUES ($1, $2, $3, $4);`,
+            [discipline_id, students_group_id, users_id, students_discipline_semester]);
         res.status(200).json("Успешно");
     } catch (error) {
         console.error(error);
@@ -345,10 +353,10 @@ module.exports.addStudentsDiscipline = async function (req, res) {
 }
 
 module.exports.addCompany = async function (req, res) {
-    const { payload: pd } = req.body;
+    const { company_name } = req.body;
     try {
         await db.none(`INSERT INTO public.company (company_name)
-                       VALUES ($1);`, [pd.company_name]);
+                       VALUES ($1);`, [company_name]);
         res.status(200).json("Успешно");
     } catch (error) {
         console.error(error);
@@ -359,11 +367,11 @@ module.exports.addCompany = async function (req, res) {
 }
 
 module.exports.addStudentsGroup = async function (req, res) {
-    const { payload: pd } = req.body;
+    const { cafedra_id, students_group_type_id, students_group_name, students_group_count } = req.body;
     try {
         await db.none(`INSERT INTO public.students_group 
                        (cafedra_id, students_group_type_id, students_group_name, students_group_count)
-                       VALUES ($1, $2, $3, $4);`, [pd.cafedra_id, pd.students_group_type_id, pd.students_group_name, pd.students_group_count]);
+                       VALUES ($1, $2, $3, $4);`, [cafedra_id, students_group_type_id, students_group_name, students_group_count]);
         res.status(200).json("Успешно");
     } catch (error) {
         console.error(error);
@@ -386,6 +394,3 @@ module.exports.addDiscipline = async function (req, res) {
         });
     }
 }
-
-
-
