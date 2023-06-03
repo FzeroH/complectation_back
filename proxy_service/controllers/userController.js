@@ -2,7 +2,7 @@ const { proxy_main } = require('../config/axios.config');
 
 module.exports.getUserById = async function (req, res) {
     try {
-        const userId = req.params.id;
+        const userId = req.body;
         const response = await proxy_main.get(`/api/user/${userId}`);
         const user = response.data;
         res.status(200).json(user);
@@ -16,7 +16,7 @@ module.exports.getUserById = async function (req, res) {
 
 module.exports.getDepartmentName = async function (req, res) {
     try {
-        const userId = req.params.userId; // Предполагается, что идентификатор пользователя доступен в параметрах запроса
+        const userId = req.params.userId;
         const response = await proxy_main.get(`/api/user/department/${userId}`);
         const department = response.data;
         res.status(200).json(department);
