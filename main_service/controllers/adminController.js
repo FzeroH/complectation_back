@@ -93,50 +93,50 @@ module.exports.getTables = async function (req, res){
     }
 };
 
-module.exports.getColumns = async function (req, res){
+module.exports.getColumns = async function (req, res) {
     const { tableName } = req.query;
     try {
         const tableSchema = schemas[tableName];
         if (!tableSchema) {
             throw new Error(`Schema not found for table: ${tableName}`);
         }
-        let { tableHeaders } = tableSchema;
+        const uniqueTableHeaders = [...new Set(tableSchema.tableHeaders)];
 
-        // Добавляем элементы из columnSchemas, если они доступны
         if (columnSchemas.hasOwnProperty(tableName)) {
             const columns = columnSchemas[tableName];
             if (Array.isArray(columns)) {
-                // Если columns является массивом, добавляем каждый элемент отдельно
+
                 for (const column of columns) {
                     const { title, name, type, list } = column;
                     if (typeof list === 'function') {
-                        const elements = await list(); // Вызываем функцию list и получаем результат
-                        tableHeaders.push({
+                        const elements = await list();
+                        const uniqueElements = [...new Set(elements)];
+                        uniqueTableHeaders.push({
                             title,
                             name,
                             type,
-                            list: elements
+                            list: uniqueElements
                         });
                     }
                 }
             } else {
-                // Если columns является объектом, добавляем его целиком
+
                 const { title, name, type, list } = columns;
                 if (typeof list === 'function') {
-                    const elements = await list(); // Вызываем функцию list и получаем результат
-                    tableHeaders.push({
+                    const elements = await list();
+                    const uniqueElements = [...new Set(elements)];
+                    uniqueTableHeaders.push({
                         title,
                         name,
                         type,
-                        list: elements
+                        list: uniqueElements
                     });
                 }
             }
         }
-        res.json(tableHeaders);
-        if (columnSchemas.hasOwnProperty(tableName)) {
-            tableHeaders.pop()
-        }
+
+        res.json(uniqueTableHeaders);
+        console.log(uniqueTableHeaders);
     } catch (error) {
         console.error(error);
         res.status(500).json({
@@ -144,6 +144,7 @@ module.exports.getColumns = async function (req, res){
         });
     }
 };
+
 
 // ===== Получение списков =====
 module.exports.getUsers = async function (req, res){
