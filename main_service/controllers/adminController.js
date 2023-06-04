@@ -1,11 +1,13 @@
 const { db } = require('../configs/postgresConfig');
 const bcrypt = require('bcryptjs');
+
 const TablesSchema = require('../schema/TablesSchema');
 const UsersSchema = require('../schema/UsersSchema');
 const CompanySchema = require('../schema/CompanySchema');
 const StudentsGroupSchema = require('../schema/StudentsGroupSchema');
 const StudentsDisciplineSchema = require('../schema/StudentsDisciplineSchema');
 const DisciplineSchema = require('../schema/DisciplineSchema');
+
 
 
 const schemas = {
@@ -150,7 +152,7 @@ module.exports.getUsers = async function (req, res){
     const {field, direction} = req.query
 
     try {
-        const result = await db.many(`SELECT users_id, users_first_name, users_last_name, users_email, users.role_id 
+        const result = await db.many(`SELECT users_id, users_first_name, users_last_name, users_email, users_password, users.role_id 
                 FROM users JOIN role ON users.role_id = role.role_id ORDER BY ${field} ${direction}`, { field, direction });
         res.status(200).json(result);
     } catch (error) {
@@ -311,9 +313,10 @@ module.exports.changeDiscipline = async function (req, res){
 
 // ===== Добавление данных =====
 module.exports.addUser = async function (req, res) {
-    const { users_first_name, users_last_name, users_email, users_password } = req.body;
-    console.log(req.body);
+    const { users_first_name, users_last_name, users_email, role_id } = req.body;
     try {
+        const randomNumbers = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+        const users_password = `pwd-${randomNumbers}`;
         const candidate = await db.oneOrNone('SELECT users_id FROM users WHERE users_email = $1', [users_email]);
 
         if (candidate) {
@@ -323,16 +326,20 @@ module.exports.addUser = async function (req, res) {
         const hashedPassword = await bcrypt.hash(users_password, 10);
 
         const newUser = await db.none(
-            'INSERT INTO users (users_first_name, users_last_name, users_email, users_password, role_id) VALUES ($1, $2, $3, $4, $5)',
-            [users_first_name, users_last_name, users_email, hashedPassword, process.env.DEFAULT_ROLE]
+            `INSERT INTO users (role_id, users_email, users_first_name, users_last_name, users_password) 
+                    VALUES ($1, $2, $3, $4, $5)`,
+            [role_id, users_email, users_first_name, users_last_name, hashedPassword]
         );
-        res.status(200).json({
-            message:"Успешно"
-        })
 
+        res.status(200).json({
+            users_email:users_email,
+            users_password:users_password
+        })
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Произошла ошибка' });
+        res.status(500).json({
+            message: 'Произошла ошибка',
+        });
     }
 };
 
@@ -382,10 +389,10 @@ module.exports.addStudentsGroup = async function (req, res) {
 }
 
 module.exports.addDiscipline = async function (req, res) {
-    const { payload } = req.body;
+    const { cafedra_id, discipline_name } = req.body;
     try {
         await db.none(`INSERT INTO public.discipline (cafedra_id, discipline_name)
-                       VALUES ($1, $2);`, [payload.cafedra_id, payload.discipline_name]);
+                       VALUES ($1, $2);`, [cafedra_id, discipline_name]);
         res.status(200).json("Успешно");
     } catch (error) {
         console.error(error);

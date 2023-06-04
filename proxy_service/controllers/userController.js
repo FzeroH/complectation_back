@@ -2,8 +2,8 @@ const { proxy_main } = require('../config/axios.config');
 
 module.exports.getUserById = async function (req, res) {
     try {
-        const userId = req.body;
-        const response = await proxy_main.get(`/api/user/${userId}`);
+        const id = req.user.userId;
+        const response = await proxy_main.get(`/api/user/?id=${id}`);
         const user = response.data;
         res.status(200).json(user);
     } catch (error) {

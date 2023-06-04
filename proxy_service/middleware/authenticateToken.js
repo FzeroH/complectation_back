@@ -5,7 +5,7 @@ module.exports.authenticateToken = async function (req, res, next) {
         try {
             let token = req.headers['authorization'].split(' ');
             if (token[0] !== 'Bearer') {
-                return res.status(401).send('Not Bearer');
+                return res.status(400).send('Not Bearer');
             } else {
                 const decoded = jwt.verify(token[1], process.env.JWT_SECRET, { algorithm: 'HS256' });
                 req.user = decoded;
@@ -15,6 +15,6 @@ module.exports.authenticateToken = async function (req, res, next) {
             return res.status(401).send('Invalid JWT token');
         }
     } else {
-        return res.status(401).send('JWT не найден!')
+        return res.status(402).send('JWT не найден!')
     }
 }

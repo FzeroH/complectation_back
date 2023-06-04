@@ -1,4 +1,6 @@
 const { proxy_main } = require('../config/axios.config');
+const fs = require('fs');
+const path = require('path');
 
 module.exports.getTables = async function (req, res) {
     try {
@@ -43,7 +45,15 @@ module.exports.getUsers = async function (req, res) {
 module.exports.addUser = async function (req, res) {
     try {
         const response = await proxy_main.post('/api/admin/users', req.body);
-        res.status(201).json(response.data);
+        const { users_email, users_password } = response.data;
+
+        const fileContent = `email: ${users_email}, password: ${users_password}`;
+        const fileName = `${users_email}_info.txt`;
+        const filePath = path.join(__dirname, '..', 'public', fileName);
+
+        fs.writeFileSync(filePath, fileContent);
+
+        res.download(filePath, fileName);
     } catch (error) {
         console.error(error);
         res.status(500).json({

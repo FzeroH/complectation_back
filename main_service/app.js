@@ -24,13 +24,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cors({
-    origin: '*'
-}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'doc_templates')));
 
 app.use('/api/auth',authRoutes);
 app.use('/api/admin',adminRoutes);
@@ -38,7 +36,7 @@ app.use('/api/', requestRoutes);
 app.use('/api/', companyRoutes);
 app.use('/api/', publicationRoutes);
 app.use('/api/', studentsDisciplineRoutes);
-app.use('/api/user', usertRoutes);
+app.use('/api/', usertRoutes);
 app.use('/api/document/', documentRoutes)
 
 module.exports = app;

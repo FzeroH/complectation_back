@@ -37,7 +37,7 @@ app.use('/api/', requestRoutes);
 app.use('/api/', companyRoutes);
 app.use('/api/', publicationRoutes);
 app.use('/api/', studentsDisciplineRoutes);
-app.use('/api/user', usertRoutes);
+app.use('/api/', usertRoutes);
 app.use('/api/document/', documentRoutes)
 
 

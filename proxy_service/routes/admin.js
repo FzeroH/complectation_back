@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/adminController');
 
-router.get('/table-list', controller.getTables);
+const {authenticateToken} = require('../middleware/authenticateToken')
 
+router.get('/table-list', authenticateToken, controller.getTables);
 router.get('/table-columns', controller.getColumns);
 
 router.get('/users', controller.getUsers);
@@ -25,6 +26,5 @@ router.put('/students_group', controller.changeStudentsGroup);
 router.get('/discipline', controller.getDiscipline);
 router.post('/discipline', controller.addDiscipline);
 router.put('/discipline', controller.changeDiscipline);
-
 
 module.exports = router

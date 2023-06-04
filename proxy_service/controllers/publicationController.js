@@ -1,11 +1,13 @@
 const { proxy_main } = require('../config/axios.config');
 
 module.exports.getPublications = async function (req, res) {
-    const { field : field_query, direction: dr, search } = req.query
+    const { field : field_query, direction: dr, page, search } = req.query
+    console.log(req.query)
+    console.log(`field:${field_query}\ndirection:${dr}}`)
     const field = field_query ?? 'publication_year';
     const direction = dr ?? 'desc';
     try {
-        const response = await proxy_main.get(`/api/publications/?field=${field}&direction=${direction}&search=${search}`);
+        const response = await proxy_main.get(`/api/publications/?field=${field}&direction=${direction}&page=${page}&search=${search}`);
         const publications = response.data;
         res.status(200).json(publications);
     } catch (error) {
