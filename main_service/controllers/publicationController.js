@@ -30,7 +30,9 @@ module.exports.getPublications = async function (req, res) {
 module.exports.getPublicationById = async function (req, res) {
     const { id } = req.query
     try {
-        const result = await db.one('SELECT publication_author, publication_title, publication_year, publication_cost, company_name FROM publication JOIN company ON publication.company_id = company.company_id WHERE publication_id = $1',
+        const result = await db.one(`SELECT publication_author, publication_title, publication_year, publication_cost, company_name 
+                FROM publication JOIN company ON publication.company_id = company.company_id 
+                WHERE publication_id = $1`,
             [id])
         return res.status(200).json(result)
     } catch (e) {

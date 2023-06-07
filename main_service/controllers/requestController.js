@@ -49,7 +49,7 @@ module.exports.changeRequestStatus = async function(req,res) {
 
 module.exports.getRequests = async function(req,res) {
     try {
-        await db.main(
+        const result = await db.manyOrNone(
             `SELECT request_id, pub_type_name, publication_title, finaly_request_id, users_first_name,
                     users_last_name, request_status_name, request_count
              FROM publication_request as pr
@@ -57,9 +57,7 @@ module.exports.getRequests = async function(req,res) {
              JOIN request_status as rs ON pr.request_status_id = rs.request_status_id
              JOIN publication as pub ON pr.publication_id = pub.publication_id
              JOIN users as us ON pr.users_id = us.users_id;`)
-        res.status(200).json({
-            message:"Успешно"
-        })
+        res.status(200).json(result)
     } catch (e) {
         console.error(e)
         res.status(500).json({
@@ -71,7 +69,7 @@ module.exports.getRequests = async function(req,res) {
 module.exports.getRequestsByUserId = async function(req,res) {
     const { id } = req.query
     try {
-        await db.manyOrNone(
+        const result = await db.manyOrNone(
             `SELECT pr.request_id, pub_type_name, publication_title,
                     cafedra_name, users_first_name, users_last_name, request_status_name,
                     request_count, prsd.students_discipline_id, discipline_name,
@@ -87,9 +85,7 @@ module.exports.getRequestsByUserId = async function(req,res) {
                       JOIN cafedra as cf ON ds.cafedra_id = cf.cafedra_id
                       JOIN students_group as sg ON sd.students_group_id = sg.students_group_id
              WHERE pr.users_id = $1;`,[id])
-        res.status(200).json({
-            message:"Успешно"
-        })
+        res.status(200).json(result)
     } catch (e) {
         console.error(e)
         res.status(500).json({
@@ -120,7 +116,7 @@ module.exports.getFilteredRequest = async function(req,res) {
             message: "Произошла ошибка"
         })
     }
-}
+} // TODO убрать нахер и сделать фильтрацию в getRequests
 
 module.exports.createOrder = async function (req,res){
     const { users_id, publication_request_ids } = req.body

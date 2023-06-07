@@ -2,6 +2,8 @@ const jwt = require('jsonwebtoken');
 
 module.exports.authenticateToken = async function (req, res, next) {
     if (req.headers['authorization']) {
+        console.log('Работает')
+        console.log(req.headers['authorization'])
         try {
             let token = req.headers['authorization'].split(' ');
             if (token[0] !== 'Bearer') {

@@ -53,7 +53,6 @@ module.exports.addUser = async function (req, res) {
 
         fs.writeFileSync(filePath, fileContent);
 
-        res.download(filePath, fileName);
     } catch (error) {
         console.error(error);
         res.status(500).json({
@@ -61,6 +60,8 @@ module.exports.addUser = async function (req, res) {
         });
     }
 };
+
+// module.exports.download
 
 module.exports.changeUser = async function (req, res) {
     try {

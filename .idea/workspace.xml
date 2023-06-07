@@ -4,9 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Добавил сваггер">
+    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Убрал проверку jwt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proxy_service/routes/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/routes/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/authController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/publicationController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/publicationController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/requestController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/userController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/routes/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/routes/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/controllers/adminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/adminController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/authController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/controllers/publicationController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/publicationController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/controllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/requestController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/userController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/middleware/authenticateToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/middleware/authenticateToken.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/routes/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/routes/user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,11 +91,11 @@
       <recent name="$PROJECT_DIR$/parser_service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sauru\Desktop\ВКР\ИС Комплектация\complectation_back\proxy_service\middleware" />
       <recent name="C:\Users\sauru\Desktop\ВКР\ИС Комплектация\complectation_back\main_service\middleware" />
       <recent name="C:\Users\sauru\Desktop\ВКР\ИС Комплектация\complectation_back\proxy_service" />
       <recent name="$PROJECT_DIR$/main_service" />
       <recent name="$PROJECT_DIR$/main_service/controllers" />
-      <recent name="$PROJECT_DIR$/parser_service/priselist" />
     </key>
   </component>
   <component name="RunManager" selected="FastAPI.parser_service">
@@ -155,14 +171,10 @@
       <workItem from="1685775300518" duration="34075000" />
       <workItem from="1685863407496" duration="15480000" />
       <workItem from="1685885602120" duration="6724000" />
-      <workItem from="1685897731958" duration="1609000" />
-    </task>
-    <task id="LOCAL-00052" summary="Изменил endpoint">
-      <created>1685192884688</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1685192884688</updated>
+      <workItem from="1685897731958" duration="1813000" />
+      <workItem from="1685938249070" duration="12000" />
+      <workItem from="1685980797410" duration="5502000" />
+      <workItem from="1686061816054" duration="15970000" />
     </task>
     <task id="LOCAL-00053" summary="Изменил функцию создания запроса. Доавбил фукнцию создания заказа">
       <created>1685193920619</created>
@@ -500,7 +512,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685893523425</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="Убрал проверку jwt">
+      <created>1685902559393</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1685902559393</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -521,7 +540,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Изменил базовую схему таблицы" />
     <MESSAGE value="Убрал лишние функции. Добавил endpoints и функции получения заголовков и данных таблиц" />
     <MESSAGE value="Убрал вывод в консоль" />
     <MESSAGE value="убрал отдельно функцию сортировки по году публикации" />
@@ -546,7 +564,8 @@
     <MESSAGE value="Изменил шаблон документа" />
     <MESSAGE value="Отрефакторил" />
     <MESSAGE value="Добавил сваггер" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил сваггер" />
+    <MESSAGE value="Убрал проверку jwt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Убрал проверку jwt" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
