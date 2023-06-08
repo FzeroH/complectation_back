@@ -6,18 +6,12 @@ const cors = require('cors');
 require('dotenv').config();
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const { sessionMiddleware } = require('./middleware/test')
 
-
+const sqlite = require('better-sqlite3')
 const session = require('express-session')
-const redisStorage = require('connect-redis')(session);
-const redis = require('redis');
-const client = redis.createClient();
-
-const host = '45.130.151.194';
-const port = 6379;
-client.on(`error`,err=>{
-    console.log(err)
-});
+const SqliteStore = require('better-sqlite3-session-store')(session)
+const db = new sqlite('session.db', {verbose: console.log})
 
 const app = express();
 // const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
@@ -28,22 +22,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
-    store: new redisStorage({
-            host: host,
-            port: 6379,
-            client: client,}),
-    saveUninitialized: true,
-    secret: 'keyboard cat',
-    key: 'sid',
+    store: new SqliteStore({
+        client: db,
+    }),
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: false,
     cookie: {
-        path:'/',
+        secure: false,
         httpOnly: true,
-        maxAge: null
-    },
-    encode: false
-}))
+        maxAge: 86400000 // Время жизни куки (24 часа)
+    }
+}));
+app.use(sessionMiddleware);
 app.use(cors({
-    origin: '*'
+    origin: 'http://127.0.0.1:5173',
+    credentials: true
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
