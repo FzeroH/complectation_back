@@ -47,11 +47,14 @@ module.exports.addUser = async function (req, res) {
         const response = await proxy_main.post('/api/admin/users', req.body);
         const { users_email, users_password } = response.data;
 
-        const fileContent = `email: ${users_email}, password: ${users_password}`;
-        const fileName = `${users_email}_info.txt`;
-        const filePath = path.join(__dirname, '..', 'public', fileName);
-
-        fs.writeFileSync(filePath, fileContent);
+        // const fileContent = `email: ${users_email}, password: ${users_password}`;
+        // const fileName = `${users_email}_info.txt`;
+        // const filePath = path.join(__dirname, '..', 'public', fileName);
+        //
+        // fs.writeFileSync(filePath, fileContent);
+        res.status(200).json({
+            message:'Пользователь успешно создан',
+        })
 
     } catch (error) {
         console.error(error);
