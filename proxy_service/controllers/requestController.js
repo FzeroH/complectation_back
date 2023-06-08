@@ -36,6 +36,7 @@ module.exports.createOrder = async function (req, res) {
         const orderData = req.body;
         const response = await proxy_main.post('/api/create_order', orderData);
         const createdOrder = response.data;
+        createdOrder.users_id = req.session.user.users_id
         res.status(201).json(createdOrder);
     } catch (error) {
         console.error(error);
@@ -60,8 +61,8 @@ module.exports.getRequests = async function (req, res) {
 
 module.exports.getRequestsByUserId = async function (req, res) {
     try {
-        const userId = req.query.userId;
-        const response = await proxy_main.get(`/api/requests?userId=${userId}`);
+        const userId = req.session.user.users_id;
+        const response = await proxy_main.get(`/api/requests?id=${userId}`);
         const requests = response.data;
         res.status(200).json(requests);
     } catch (error) {

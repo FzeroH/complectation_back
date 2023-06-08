@@ -21,9 +21,8 @@ module.exports.getPublicationById = async function (req, res) {
         const id = req.query.id;
         const response = await proxy_main.get(`/api/publication/?id=${id}`);
         const publication = response.data;
-        console.log(req.user)
-        // publication.cafedra_name = req.session.user.cafedra_name;
-        // console.log(publication)
+        publication.cafedra_name = req.session.user.cafedra_name;
+
         res.status(200).json(publication);
     } catch (error) {
         console.error(error);
