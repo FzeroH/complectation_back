@@ -7,7 +7,7 @@ module.exports.createRequest = async function(req,res) {
             const {request_id} = await transaction.one(`
             INSERT INTO publication_request(pub_type_id, publication_id, finaly_request_id, users_id, request_status_id, request_count) 
             VALUES ($1, $2, null, $4, $5, $6) RETURNING request_id`,
-                [pub_type_id, publication_id, null, 2, 1, request_count]);
+                [pub_type_id, publication_id, null, users_id, 1, request_count]);
             const values = students_discipline_ids.map((students_discipline_id) => {
                 return [students_discipline_id, request_id];
             });
@@ -50,13 +50,32 @@ module.exports.changeRequestStatus = async function(req,res) {
 module.exports.getRequests = async function(req,res) {
     try {
         const result = await db.manyOrNone(
-            `SELECT request_id, pub_type_name, publication_title, finaly_request_id, users_first_name,
-                    users_last_name, request_status_name, request_count
+            `SELECT pr.request_id as id, request_status_name as status, cafedra_name,
+                    publication_author, publication_title, company_name, publication_year, pub_type_name,
+                    request_count, (publication_cost * request_count) as publication_cost,
+                    ARRAY_AGG(
+                            JSON_BUILD_OBJECT(
+                                    'discipline_name', ds.discipline_name,
+                                    'students_group_type_name', sgt.students_group_type_name,
+                                    'students_group_name', sgt.students_group_type_name,
+                                    'students_discipline_semester', sd.students_discipline_semester
+                                )
+                        ) as recommend_list
              FROM publication_request as pr
-             JOIN publication_type as pt ON pr.pub_type_id = pt.pub_type_id
-             JOIN request_status as rs ON pr.request_status_id = rs.request_status_id
-             JOIN publication as pub ON pr.publication_id = pub.publication_id
-             JOIN users as us ON pr.users_id = us.users_id;`)
+                      JOIN publication_type as pt ON pr.pub_type_id = pt.pub_type_id
+                      JOIN request_status as rs ON pr.request_status_id = rs.request_status_id
+                      JOIN publication as pub ON pr.publication_id = pub.publication_id
+                      JOIN company as cp ON pub.company_id = cp.company_id
+                      JOIN users as us ON pr.users_id = us.users_id
+                      JOIN pub_req_students_discipline as prsd ON prsd.request_id = pr.request_id
+                      JOIN students_discipline as sd ON prsd.students_discipline_id = sd.students_discipline_id
+                      JOIN discipline as ds ON sd.discipline_id = ds.discipline_id
+                      JOIN cafedra as cf ON ds.cafedra_id = cf.cafedra_id
+                      JOIN students_group as sg ON sd.students_group_id = sg.students_group_id
+                      JOIN students_group_type as sgt ON sg.students_group_type_id = sgt.students_group_type_id
+             GROUP BY pr.request_id, request_status_name, cafedra_name,
+                      publication_author, publication_title, company_name, publication_year, pub_type_name,
+                      request_count, publication_cost;`)
         res.status(200).json(result)
     } catch (e) {
         console.error(e)

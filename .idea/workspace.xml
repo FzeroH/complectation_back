@@ -4,8 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Изменил данные, получаемые при авторизации">
-      <change beforePath="$PROJECT_DIR$/proxy_service/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/userController.js" afterDir="false" />
+    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Убрал console.log">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/adminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/adminController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/requestController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/studentsDisciplineController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/studentsDisciplineController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/userController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/controllers/adminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/adminController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/controllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/requestController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/controllers/studentsDisciplineController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/studentsDisciplineController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,13 +167,6 @@
       <workItem from="1686061816054" duration="15970000" />
       <workItem from="1686110849939" duration="345000" />
       <workItem from="1686150523325" duration="12954000" />
-    </task>
-    <task id="LOCAL-00061" summary="Добавил фильтр публикаций по году">
-      <created>1685278970032</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1685278970032</updated>
     </task>
     <task id="LOCAL-00062" summary="Добавил endpoint фильтра публикаций по году">
       <created>1685278982463</created>
@@ -504,7 +504,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686220428444</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="Убрал console.log">
+      <created>1686220464715</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1686220464715</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -533,7 +540,6 @@
     <MESSAGE value="Отредактировал функции для корректной работы" />
     <MESSAGE value="Исправил баг с дублирующимися колонками" />
     <MESSAGE value="1" />
-    <MESSAGE value="Убрал console.log" />
     <MESSAGE value="Исправил тип данных" />
     <MESSAGE value="Подключил проверку токена в роут" />
     <MESSAGE value="Изменил способ получения ID" />
@@ -550,7 +556,8 @@
     <MESSAGE value="Убрал бесполезную middleware" />
     <MESSAGE value="Изменил запрос на получение списка заказов для преподавателя" />
     <MESSAGE value="Изменил данные, получаемые при авторизации" />
-    <option name="LAST_COMMIT_MESSAGE" value="Изменил данные, получаемые при авторизации" />
+    <MESSAGE value="Убрал console.log" />
+    <option name="LAST_COMMIT_MESSAGE" value="Убрал console.log" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

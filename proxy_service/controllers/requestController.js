@@ -2,7 +2,7 @@ const { proxy_main } = require('../config/axios.config');
 
 module.exports.createRequest = async function (req, res) {
     try {
-        const requestData = req.body; //TODO сделать сессию. Вставлять в requestData id пользователя и передавать его далее
+        const requestData = req.body;
         requestData.cafedra_id = req.session.user.cafedra_id
         requestData.users_id = req.session.user.users_id
         const response = await proxy_main.post('/api/create_request', requestData);
