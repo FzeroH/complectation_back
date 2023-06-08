@@ -71,8 +71,16 @@ module.exports.getRequestsByUserId = async function(req,res) {
     try {
         const result = await db.manyOrNone(
             `SELECT pr.request_id as id, request_status_name as status, cafedra_name,
-                    publication_author, publication_title, company_name, publication_year
-                    pub_type_name, request_count, publication_cost (discipline_name, students_group_type_name, studens_group_name, students_discipline_semester) as recommend_list
+                    publication_author, publication_title, company_name, publication_year, pub_type_name,
+                    request_count, (publication_cost * request_count) as publication_cost,
+                    ARRAY_AGG(
+                            JSON_BUILD_OBJECT(
+                                    'discipline_name', ds.discipline_name,
+                                    'students_group_type_name', sgt.students_group_type_name,
+                                    'students_group_name', sgt.students_group_type_name,
+                                    'students_discipline_semester', sd.students_discipline_semester
+                                )
+                        ) as recommend_list
              FROM publication_request as pr
                       JOIN publication_type as pt ON pr.pub_type_id = pt.pub_type_id
                       JOIN request_status as rs ON pr.request_status_id = rs.request_status_id
@@ -84,16 +92,13 @@ module.exports.getRequestsByUserId = async function(req,res) {
                       JOIN discipline as ds ON sd.discipline_id = ds.discipline_id
                       JOIN cafedra as cf ON ds.cafedra_id = cf.cafedra_id
                       JOIN students_group as sg ON sd.students_group_id = sg.students_group_id
-             WHERE pr.users_id = $1;`,[id])
-        // const recommend_list = db.many (`
-        // SELECT discipline_name, students_group_type_name, studens_group_name, students_discipline_semester
-        // FROM pub_req_students_discipline as prsd
-        //          JOIN users as us ON pr.users_id = us.users_id
-        //          JOIN publication_request as pr ON pr.request_id = prsd.request_id
-        //          JOIN students_discipline as sd ON prsd.students_discipline_id = sd.students_discipline_id
-        //          JOIN discipline as ds ON sd.discipline_id = ds.discipline_id
-        //          JOIN students_group as sg ON sd.students_group_id = sg.students_group_id WHERE prsd.publication_id = ${id}`,[id]);
-        // result.recommend_list = recommend_list
+                      JOIN students_group_type as sgt ON sg.students_group_type_id = sgt.students_group_type_id
+             WHERE pr.users_id = $1
+             GROUP BY pr.request_id, request_status_name, cafedra_name,
+                      publication_author, publication_title, company_name, publication_year, pub_type_name,
+                      request_count, publication_cost;`,
+            [+id]
+        );
         res.status(200).json(result)
     } catch (e) {
         console.error(e)
