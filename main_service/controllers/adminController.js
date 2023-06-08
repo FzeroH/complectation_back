@@ -315,8 +315,9 @@ module.exports.changeDiscipline = async function (req, res){
 module.exports.addUser = async function (req, res) {
     const { users_first_name, users_last_name, users_email, role_id } = req.body;
     try {
-        const randomNumbers = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-        const users_password = `pwd-${randomNumbers}`;
+        // const randomNumbers = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+        const slicePassword = users_email.slice(0,4);
+        const users_password = `pwd-${slicePassword}`;
         const candidate = await db.oneOrNone('SELECT users_id FROM users WHERE users_email = $1', [users_email]);
 
         if (candidate) {
