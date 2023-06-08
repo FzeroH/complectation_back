@@ -6,7 +6,6 @@ const cors = require('cors');
 require('dotenv').config();
 const bodyParser = require('body-parser');
 const fs = require('fs');
-const { sessionMiddleware } = require('./middleware/test')
 
 const sqlite = require('better-sqlite3')
 const session = require('express-session')
@@ -34,7 +33,6 @@ app.use(session({
         maxAge: 86400000 // Время жизни куки (24 часа)
     }
 }));
-app.use(sessionMiddleware);
 app.use(cors({
     origin: 'http://localhost:5173',
     credentials: true
