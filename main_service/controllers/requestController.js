@@ -1,4 +1,5 @@
 const { db } = require('../configs/postgresConfig')
+const {fromCamel} = require("postgres");
 
 module.exports.createRequest = async function(req,res) {
     const { pub_type_id, publication_id, users_id, students_discipline_ids, request_count } = req.body
@@ -11,7 +12,6 @@ module.exports.createRequest = async function(req,res) {
             const values = students_discipline_ids.map((students_discipline_id) => {
                 return [students_discipline_id, request_id];
             });
-            console.log(values)
             for (const [students_discipline_id, request_id] of values) {
                 await transaction.none(`
         INSERT INTO pub_req_students_discipline(students_discipline_id, request_id) 
@@ -31,11 +31,13 @@ module.exports.createRequest = async function(req,res) {
 }
 
 module.exports.changeRequestStatus = async function(req,res) {
-    const { orderId, status} = req.body
+    const { id, status} = req.body
     try {
+        const {request_status_id : status_id} = await db.one(`SELECT request_status_id from request_status 
+                         where request_status_name = $1`,[status])
         await db.none(
             `UPDATE publication_request SET request_status_id = $2 
-                   WHERE request_id = $1`,[orderId, status])
+                   WHERE request_id = $1`,[id, status_id])
         res.status(200).json({
             message:"Успешно"
         })
@@ -48,13 +50,16 @@ module.exports.changeRequestStatus = async function(req,res) {
 }
 
 module.exports.getRequests = async function(req,res) {
-    const {value, title} = req.query
+    const { value, status } = req.query
+
     const company = value? `where pub.company_id = ${value}` : ''
+    const statusCondition = status ? `where request_status_name = '${status}'` : '';
+
     try {
         const result = await db.manyOrNone(
             `SELECT pr.request_id as id, request_status_name as status, cafedra_name,
                     publication_author, publication_title, company_name, publication_year, pub_type_name,
-                    request_count, (publication_cost * request_count) as publication_cost,
+                    request_count, publication_cost,
                     ARRAY_AGG(
                             JSON_BUILD_OBJECT(
                                     'discipline_name', ds.discipline_name,
@@ -76,6 +81,7 @@ module.exports.getRequests = async function(req,res) {
                       JOIN students_group as sg ON sd.students_group_id = sg.students_group_id
                       JOIN students_group_type as sgt ON sg.students_group_type_id = sgt.students_group_type_id
              ${company}
+             ${statusCondition}
              GROUP BY pr.request_id, request_status_name, cafedra_name,
                       publication_author, publication_title, company_name, publication_year, pub_type_name,
                       request_count, publication_cost;`)
@@ -94,7 +100,7 @@ module.exports.getRequestsByUserId = async function(req,res) {
         const result = await db.manyOrNone(
             `SELECT pr.request_id as id, request_status_name as status, cafedra_name,
                     publication_author, publication_title, company_name, publication_year, pub_type_name,
-                    request_count, (publication_cost * request_count) as publication_cost,
+                    request_count, publication_cost,
                     ARRAY_AGG(
                             JSON_BUILD_OBJECT(
                                     'discipline_name', ds.discipline_name,
@@ -131,22 +137,25 @@ module.exports.getRequestsByUserId = async function(req,res) {
 }
 
 module.exports.createOrder = async function (req,res){
-    const { users_id, publication_request_ids } = req.body
+    const { users_id, order_ids, total_price } = req.body
     try {
         const date = new Date()
         const formattedDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}`
-
         await db.tx( async (transaction) => {
-            const finalyReqId = transaction.one(
-                `INSERT INTO finaly_request(users_id, finaly_request_date, finaly_cost) 
-                    VALUES ($1,$2,$3) RETYRNING finaly_request_id`,[users_id, formattedDate]);
-            const values = publication_request_ids.map((publication_request_id) => {
-                return [publication_request_id, finalyReqId.finaly_request_id];
+            const { finaly_request_id } = await transaction.one(
+                `INSERT INTO finaly_request(users_id, finaly_request_date, finaly_cost)
+                    VALUES ($1,$2,$3) RETURNING finaly_request_id`,[users_id, formattedDate, total_price]);
+            const values = order_ids.map((request_id) => {
+                return [request_id, finaly_request_id];
             });
-            await transaction.batch(`UPDATE publication_request(finaly_request_id) SET finaly_request_id = $2 WHERE publication_request_id = $1`, values);
+            for (const [request_id, finaly_request_id] of values) {
+                await transaction.none(`
+                UPDATE publication_request SET finaly_request_id = $2, request_status_id = 5 WHERE request_id = $1`,
+                    [request_id, finaly_request_id]);
+            }
         });
         res.status(200).json({
-            message:"Успешно"
+            message:"Успешно",
         });
     } catch (e) {
         console.error(e)

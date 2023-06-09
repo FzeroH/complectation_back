@@ -18,9 +18,9 @@ module.exports.createRequest = async function (req, res) {
 
 module.exports.changeRequestStatus = async function (req, res) {
     try {
-        const requestId = req.body.id;
-        const newStatus = req.body.status;
-        const response = await proxy_main.put(`/api/change_status?id=${requestId}&status=${newStatus}`);
+        console.log(req.body)
+        const {id, status} = req.body;
+        const response = await proxy_main.put(`/api/change_status`, {id, status});
         const updatedRequest = response.data;
         res.status(200).json(updatedRequest);
     } catch (error) {
@@ -32,12 +32,18 @@ module.exports.changeRequestStatus = async function (req, res) {
 }
 
 module.exports.createOrder = async function (req, res) {
+    const {order_ids, total_price} = req.body
     try {
-        const orderData = req.body;
-        const response = await proxy_main.post('/api/create_order', orderData);
-        const createdOrder = response.data;
-        createdOrder.users_id = req.session.user.users_id
-        res.status(201).json(createdOrder);
+        const data = {
+            users_id: req.session.user.users_id,
+            order_ids,
+            total_price
+        }
+        console.log(data);
+        const response = await proxy_main.post('/api/create_order', data);
+        res.status(201).json({
+            message: 'Успешно'
+        });
     } catch (error) {
         console.error(error);
         res.status(500).json({
@@ -47,12 +53,13 @@ module.exports.createOrder = async function (req, res) {
 }
 
 module.exports.getRequests = async function (req, res) {
-    const { value: val, title: name } = req.query;
+    const { value: val, status: stat } = req.query;
     const value = val || '';
-    const title = name || '';
+    const status = stat || '';
+    console.log(status);
 
     try {
-        const response = await proxy_main.get(`/api/all_requests?value=${value}&title=${title}`);
+        const response = await proxy_main.get(`/api/all_requests?value=${value}&status=${status}`);
         const requests = response.data;
         res.status(200).json(requests);
     } catch (error) {
