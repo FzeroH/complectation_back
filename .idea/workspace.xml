@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Изменил шаблон docx файла">
+    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Доработал функцию загрузки документа на клиент">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/controllers/documentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/documentController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/controllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/requestController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proxy_service/controllers/documentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/documentController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proxy_service/controllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/requestController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/studentsDisciplineController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/studentsDisciplineController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,21 +130,7 @@
       <workItem from="1685479686301" duration="58000" />
       <workItem from="1685556314152" duration="4731000" />
       <workItem from="1685636375122" duration="8802000" />
-      <workItem from="1686293112641" duration="20274000" />
-    </task>
-    <task id="LOCAL-00044" summary="отключил проверку токена">
-      <created>1683904483863</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1683904483863</updated>
-    </task>
-    <task id="LOCAL-00045" summary="отключил проверку токена">
-      <created>1683904917615</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1683904917615</updated>
+      <workItem from="1686293112641" duration="20930000" />
     </task>
     <task id="LOCAL-00046" summary="Перенёс регистрацию в контроллер админа">
       <created>1684174198919</created>
@@ -478,7 +461,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686318108465</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="Добавил отправку id заявки в ответе">
+      <created>1686320217214</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1686320217215</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Доработал функцию загрузки документа на клиент">
+      <created>1686320239727</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1686320239727</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -499,8 +496,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил алиасы для корректного отображения на фронте" />
-    <MESSAGE value="Сделал выполнение запроса к базе внутри транзакции" />
     <MESSAGE value="Подправил роут" />
     <MESSAGE value="Изменил название функции update на change" />
     <MESSAGE value="Добавил к запросу вывод количество студентов" />
@@ -524,6 +519,8 @@
     <MESSAGE value="Привёл в работоспособное состояние создание заказа" />
     <MESSAGE value="Изменил http запрос" />
     <MESSAGE value="Изменил шаблон docx файла" />
-    <option name="LAST_COMMIT_MESSAGE" value="Изменил шаблон docx файла" />
+    <MESSAGE value="Добавил отправку id заявки в ответе" />
+    <MESSAGE value="Доработал функцию загрузки документа на клиент" />
+    <option name="LAST_COMMIT_MESSAGE" value="Доработал функцию загрузки документа на клиент" />
   </component>
 </project>

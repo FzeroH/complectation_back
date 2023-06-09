@@ -8,6 +8,7 @@ module.exports.getDiscipline = async function (req,res) {
         FROM students_discipline as sd 
         join discipline as ds on sd.discipline_id = ds.discipline_id
         where users_id = $1
+        GROUP BY sd.discipline_id, ds.discipline_name
         `, [+users_id])
         return res.status(200).json(result)
     } catch (e) {
