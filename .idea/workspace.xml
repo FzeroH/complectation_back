@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Добавил группировку в getDiscipline для избавления от дублированиия предметов">
+    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Добавил сортировки заявок по убыванию id">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/controllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/requestController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,14 +129,7 @@
       <workItem from="1685479686301" duration="58000" />
       <workItem from="1685556314152" duration="4731000" />
       <workItem from="1685636375122" duration="8802000" />
-      <workItem from="1686293112641" duration="21865000" />
-    </task>
-    <task id="LOCAL-00047" summary="Добавил функции заполнения таблиц от админа">
-      <created>1684223981864</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1684223981864</updated>
+      <workItem from="1686293112641" duration="22524000" />
     </task>
     <task id="LOCAL-00048" summary="Добавил роуты для запросов на покупку литературы">
       <created>1684224015096</created>
@@ -475,7 +467,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686320934759</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="Добавил сортировки заявок по убыванию id">
+      <created>1686322066718</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1686322066718</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -496,7 +495,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Изменил название функции update на change" />
     <MESSAGE value="Добавил к запросу вывод количество студентов" />
     <MESSAGE value="Добавил алиасы для корректной отправки на фронт" />
     <MESSAGE value="Добавил фукнции получения списка таблиц и списка колонок в таблице" />
@@ -521,6 +519,7 @@
     <MESSAGE value="Добавил отправку id заявки в ответе" />
     <MESSAGE value="Доработал функцию загрузки документа на клиент" />
     <MESSAGE value="Добавил группировку в getDiscipline для избавления от дублированиия предметов" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил группировку в getDiscipline для избавления от дублированиия предметов" />
+    <MESSAGE value="Добавил сортировки заявок по убыванию id" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил сортировки заявок по убыванию id" />
   </component>
 </project>
