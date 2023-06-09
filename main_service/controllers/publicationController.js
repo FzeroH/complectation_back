@@ -1,11 +1,6 @@
 const { db } = require('../configs/postgresConfig')
 
 module.exports.getPublications = async function (req, res) {
-    // const { field : field_query, direction: dr, page, search } = req.query
-    // console.log(dr)
-    // const field = field_query ?? 'publication_year';
-    // const direction = dr ?? 'desc';
-    // console.log(`field: ${field}, direction:${direction}`)
     const {field, direction, page, search} = req.query
   try {
         const where_query = search? `WHERE (publication_author|| ' ' || publication_title|| ' ' || company_name || ' ' || publication_year)
