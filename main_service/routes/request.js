@@ -12,6 +12,4 @@ router.get('/all_requests', controller.getRequests);
 
 router.get('/requests', controller.getRequestsByUserId);
 
-router.get('/get_filtered_request', controller.getFilteredRequest);
-
 module.exports = router

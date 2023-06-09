@@ -47,8 +47,12 @@ module.exports.createOrder = async function (req, res) {
 }
 
 module.exports.getRequests = async function (req, res) {
+    const { value: val, title: name } = req.query;
+    const value = val || '';
+    const title = name || '';
+
     try {
-        const response = await proxy_main.get('/api/all_requests');
+        const response = await proxy_main.get(`/api/all_requests?value=${value}&title=${title}`);
         const requests = response.data;
         res.status(200).json(requests);
     } catch (error) {
@@ -65,20 +69,6 @@ module.exports.getRequestsByUserId = async function (req, res) {
         const response = await proxy_main.get(`/api/requests?id=${userId}`);
         const requests = response.data;
         res.status(200).json(requests);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            message: 'Произошла ошибка',
-        });
-    }
-}
-
-module.exports.getFilteredRequest = async function (req, res) {
-    try {
-        const filters = req.query;
-        const response = await proxy_main.get('/api/get_filtered_request', { params: filters });
-        const filteredRequest = response.data;
-        res.status(200).json(filteredRequest);
     } catch (error) {
         console.error(error);
         res.status(500).json({

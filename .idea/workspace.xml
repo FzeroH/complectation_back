@@ -6,13 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Убрал console.log">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/controllers/adminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/adminController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/companyController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/companyController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/publicationController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/publicationController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_service/controllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/requestController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/controllers/studentsDisciplineController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/studentsDisciplineController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/userController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proxy_service/controllers/adminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/adminController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/routes/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/routes/request.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proxy_service/controllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/requestController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proxy_service/controllers/studentsDisciplineController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/studentsDisciplineController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/routes/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/routes/request.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,10 +48,9 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.15.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.34&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;jbr-11&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sauru/Desktop/ВКР/ИС Комплектация/complectation_back/proxy_service/routes&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.16.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.16.0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sauru/Desktop/ВКР/ИС Комплектация/complectation_back/main_service/doc_templates&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -62,7 +60,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;E:\\IntelliJ IDEA 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -74,21 +72,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\sauru\Desktop\ВКР\ИС Комплектация\complectation_back\proxy_service\routes" />
-      <recent name="C:\Users\sauru\Desktop\ВКР\ИС Комплектация\complectation_back\proxy_service" />
       <recent name="C:\Users\sauru\Desktop\ВКР\ИС Комплектация\complectation_back\main_service\doc_templates" />
       <recent name="$PROJECT_DIR$/admin_service" />
       <recent name="$PROJECT_DIR$/parser_service" />
+      <recent name="$PROJECT_DIR$/auth_service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\sauru\Desktop\ВКР\ИС Комплектация\complectation_back\proxy_service\middleware" />
-      <recent name="C:\Users\sauru\Desktop\ВКР\ИС Комплектация\complectation_back\main_service\middleware" />
-      <recent name="C:\Users\sauru\Desktop\ВКР\ИС Комплектация\complectation_back\proxy_service" />
       <recent name="$PROJECT_DIR$/main_service" />
       <recent name="$PROJECT_DIR$/main_service/controllers" />
+      <recent name="$PROJECT_DIR$/parser_service/priselist" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager">
     <configuration name="parser_service" type="Python.FastAPI">
       <option name="file" value="$PROJECT_DIR$/parser_service/main.py" />
       <module name="parser_service" />
@@ -103,26 +98,8 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/proxy_service/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="npm.start" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="" />
@@ -156,17 +133,183 @@
       <workItem from="1685289218703" duration="6570000" />
       <workItem from="1685479686301" duration="58000" />
       <workItem from="1685556314152" duration="4731000" />
-      <workItem from="1685636375122" duration="8945000" />
-      <workItem from="1685714630696" duration="8181000" />
-      <workItem from="1685775300518" duration="34075000" />
-      <workItem from="1685863407496" duration="15480000" />
-      <workItem from="1685885602120" duration="6724000" />
-      <workItem from="1685897731958" duration="1813000" />
-      <workItem from="1685938249070" duration="12000" />
-      <workItem from="1685980797410" duration="5502000" />
-      <workItem from="1686061816054" duration="15970000" />
-      <workItem from="1686110849939" duration="345000" />
-      <workItem from="1686150523325" duration="12954000" />
+      <workItem from="1685636375122" duration="8802000" />
+      <workItem from="1686293112641" duration="2466000" />
+    </task>
+    <task id="LOCAL-00037" summary="Добавил проверку необходимости обновления токена">
+      <created>1683651414294</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1683651414294</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Добавил опции для функции декодирования">
+      <created>1683656522419</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1683656522419</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Добавил рабочую версию кода отправки данных в бд">
+      <created>1683656610168</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1683656610168</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Добавил проверку роли пользователя">
+      <created>1683656638609</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1683656638609</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Соединил сервисы авторизации и администрирования в один">
+      <created>1683805018785</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1683805018785</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Удалил лишний файл">
+      <created>1683805122051</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1683805122051</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Добавил необходимые проверки корректности данных">
+      <created>1683904446579</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1683904446579</updated>
+    </task>
+    <task id="LOCAL-00044" summary="отключил проверку токена">
+      <created>1683904483863</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1683904483863</updated>
+    </task>
+    <task id="LOCAL-00045" summary="отключил проверку токена">
+      <created>1683904917615</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1683904917615</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Перенёс регистрацию в контроллер админа">
+      <created>1684174198919</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1684174198919</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Добавил функции заполнения таблиц от админа">
+      <created>1684223981864</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1684223981864</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Добавил роуты для запросов на покупку литературы">
+      <created>1684224015096</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1684224015096</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Удалил лишний комментарий">
+      <created>1684224050278</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1684224050278</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Добавил функции обновления таблиц и роуты к ним">
+      <created>1684236187762</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1684236187762</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Изменил TODO">
+      <created>1685192839209</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1685192839209</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Изменил endpoint">
+      <created>1685192884688</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1685192884688</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Изменил функцию создания запроса. Доавбил фукнцию создания заказа">
+      <created>1685193920619</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1685193920619</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Отрефакторил getPublications">
+      <created>1685193967230</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1685193967230</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Добавил credentials в cors">
+      <created>1685194024678</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1685194024678</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Добавил библиотеку для генерации docx файлов">
+      <created>1685204135856</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1685204135856</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Добавил шаблон для генерации документа">
+      <created>1685204153878</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1685204153878</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Добавил функцию и endpoint для генерации и выгрузки файла с сервера">
+      <created>1685204185878</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1685204185878</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Изменил endpoint">
+      <created>1685278929355</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1685278929356</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Изменил endpoint">
+      <created>1685278942466</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1685278942466</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Добавил фильтр публикаций по году">
+      <created>1685278970032</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1685278970032</updated>
     </task>
     <task id="LOCAL-00062" summary="Добавил endpoint фильтра публикаций по году">
       <created>1685278982463</created>
@@ -336,182 +479,7 @@
       <option name="project" value="LOCAL" />
       <updated>1685647615639</updated>
     </task>
-    <task id="LOCAL-00086" summary="Убрал проверку роли пользователя">
-      <created>1685648232630</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1685648232630</updated>
-    </task>
-    <task id="LOCAL-00087" summary="Убрал middleware">
-      <created>1685717275543</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1685717275543</updated>
-    </task>
-    <task id="LOCAL-00088" summary="Отредактировал путь до статических файлов">
-      <created>1685717299651</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1685717299651</updated>
-    </task>
-    <task id="LOCAL-00089" summary="Добавил все необходимые на данный момент функции в промежуточный сервис">
-      <created>1685721572375</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1685721572375</updated>
-    </task>
-    <task id="LOCAL-00090" summary="Отредактировал функции для корректной работы">
-      <created>1685796873002</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1685796873003</updated>
-    </task>
-    <task id="LOCAL-00091" summary="Исправил баг с дублирующимися колонками">
-      <created>1685798857833</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1685798857833</updated>
-    </task>
-    <task id="LOCAL-00092" summary="1">
-      <created>1685798864801</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1685798864801</updated>
-    </task>
-    <task id="LOCAL-00093" summary="Убрал console.log">
-      <created>1685798905568</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1685798905568</updated>
-    </task>
-    <task id="LOCAL-00094" summary="Исправил тип данных">
-      <created>1685815389534</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1685815389534</updated>
-    </task>
-    <task id="LOCAL-00095" summary="Подключил проверку токена в роут">
-      <created>1685815417822</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1685815417822</updated>
-    </task>
-    <task id="LOCAL-00096" summary="Изменил способ получения ID">
-      <created>1685815960294</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1685815960294</updated>
-    </task>
-    <task id="LOCAL-00097" summary="Добавил генератор сваггера">
-      <created>1685893463225</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1685893463225</updated>
-    </task>
-    <task id="LOCAL-00098" summary="Изменил шаблон документа">
-      <created>1685893474397</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1685893474397</updated>
-    </task>
-    <task id="LOCAL-00099" summary="Отрефакторил">
-      <created>1685893512388</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1685893512388</updated>
-    </task>
-    <task id="LOCAL-00100" summary="Добавил сваггер">
-      <created>1685893523425</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1685893523425</updated>
-    </task>
-    <task id="LOCAL-00101" summary="Убрал проверку jwt">
-      <created>1685902559393</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1685902559393</updated>
-    </task>
-    <task id="LOCAL-00102" summary="Добавил необходимые библиотеки">
-      <created>1686110897970</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1686110897970</updated>
-    </task>
-    <task id="LOCAL-00103" summary="Внёс правки">
-      <created>1686110927200</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1686110927200</updated>
-    </task>
-    <task id="LOCAL-00104" summary="Добавил сессии express. ID пользователя теперь хранится в сессии">
-      <created>1686110991523</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1686110991523</updated>
-    </task>
-    <task id="LOCAL-00105" summary="Добавил сессии express и подключение к redis.">
-      <created>1686111013910</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1686111013910</updated>
-    </task>
-    <task id="LOCAL-00106" summary="Удалил бесполезную функцию">
-      <created>1686220333814</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1686220333814</updated>
-    </task>
-    <task id="LOCAL-00107" summary="Убрал бесполезную middleware">
-      <created>1686220359871</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1686220359871</updated>
-    </task>
-    <task id="LOCAL-00108" summary="Изменил запрос на получение списка заказов для преподавателя">
-      <created>1686220392969</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1686220392969</updated>
-    </task>
-    <task id="LOCAL-00109" summary="Изменил данные, получаемые при авторизации">
-      <created>1686220428444</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1686220428444</updated>
-    </task>
-    <task id="LOCAL-00110" summary="Убрал console.log">
-      <created>1686220464715</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1686220464715</updated>
-    </task>
-    <option name="localTasksCounter" value="111" />
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -532,35 +500,31 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил поиск по фрагментам слова" />
-    <MESSAGE value="Убрал проверку роли пользователя" />
-    <MESSAGE value="Убрал middleware" />
-    <MESSAGE value="Отредактировал путь до статических файлов" />
-    <MESSAGE value="Добавил все необходимые на данный момент функции в промежуточный сервис" />
-    <MESSAGE value="Отредактировал функции для корректной работы" />
-    <MESSAGE value="Исправил баг с дублирующимися колонками" />
+    <MESSAGE value="Добавил шаблон для генерации документа" />
+    <MESSAGE value="Добавил функцию и endpoint для генерации и выгрузки файла с сервера" />
+    <MESSAGE value="Изменил endpoint" />
+    <MESSAGE value="Добавил фильтр публикаций по году" />
+    <MESSAGE value="Добавил endpoint фильтра публикаций по году" />
+    <MESSAGE value="Добавил функции создания заказа, получения списка заявок (всего и по id пользователя), фильтрации заявок по издательствам" />
+    <MESSAGE value="Изменил вывод поля с id роли на название" />
+    <MESSAGE value="Добавил алиасы для корректного отображения на фронте" />
+    <MESSAGE value="Сделал выполнение запроса к базе внутри транзакции" />
+    <MESSAGE value="Подправил роут" />
+    <MESSAGE value="Изменил название функции update на change" />
+    <MESSAGE value="Добавил к запросу вывод количество студентов" />
+    <MESSAGE value="Добавил алиасы для корректной отправки на фронт" />
+    <MESSAGE value="Добавил фукнции получения списка таблиц и списка колонок в таблице" />
+    <MESSAGE value="Изменил базовую схему таблицы" />
+    <MESSAGE value="Убрал лишние функции. Добавил endpoints и функции получения заголовков и данных таблиц" />
+    <MESSAGE value="Убрал вывод в консоль" />
+    <MESSAGE value="убрал отдельно функцию сортировки по году публикации" />
+    <MESSAGE value="Убрал закомментированную функцию" />
+    <MESSAGE value="Изменил названия эндпоинтов" />
+    <MESSAGE value="Изменил названия переменных" />
+    <MESSAGE value="Добавил возможность обнавления и записи данных в таблицу" />
+    <MESSAGE value="Изменил вывод публикаций со всех на 30 из списка" />
     <MESSAGE value="1" />
-    <MESSAGE value="Исправил тип данных" />
-    <MESSAGE value="Подключил проверку токена в роут" />
-    <MESSAGE value="Изменил способ получения ID" />
-    <MESSAGE value="Добавил генератор сваггера" />
-    <MESSAGE value="Изменил шаблон документа" />
-    <MESSAGE value="Отрефакторил" />
-    <MESSAGE value="Добавил сваггер" />
-    <MESSAGE value="Убрал проверку jwt" />
-    <MESSAGE value="Добавил необходимые библиотеки" />
-    <MESSAGE value="Внёс правки" />
-    <MESSAGE value="Добавил сессии express. ID пользователя теперь хранится в сессии" />
-    <MESSAGE value="Добавил сессии express и подключение к redis." />
-    <MESSAGE value="Удалил бесполезную функцию" />
-    <MESSAGE value="Убрал бесполезную middleware" />
-    <MESSAGE value="Изменил запрос на получение списка заказов для преподавателя" />
-    <MESSAGE value="Изменил данные, получаемые при авторизации" />
-    <MESSAGE value="Убрал console.log" />
-    <option name="LAST_COMMIT_MESSAGE" value="Убрал console.log" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+    <MESSAGE value="Добавил поиск по фрагментам слова" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил поиск по фрагментам слова" />
   </component>
 </project>
