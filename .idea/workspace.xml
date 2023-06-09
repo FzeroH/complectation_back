@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Доработал функцию загрузки документа на клиент">
+    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Добавил группировку в getDiscipline для избавления от дублированиия предметов">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/controllers/studentsDisciplineController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/studentsDisciplineController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/requestController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,14 +130,7 @@
       <workItem from="1685479686301" duration="58000" />
       <workItem from="1685556314152" duration="4731000" />
       <workItem from="1685636375122" duration="8802000" />
-      <workItem from="1686293112641" duration="20930000" />
-    </task>
-    <task id="LOCAL-00046" summary="Перенёс регистрацию в контроллер админа">
-      <created>1684174198919</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1684174198919</updated>
+      <workItem from="1686293112641" duration="21865000" />
     </task>
     <task id="LOCAL-00047" summary="Добавил функции заполнения таблиц от админа">
       <created>1684223981864</created>
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686320239727</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="Добавил группировку в getDiscipline для избавления от дублированиия предметов">
+      <created>1686320934759</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1686320934759</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -496,7 +496,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Подправил роут" />
     <MESSAGE value="Изменил название функции update на change" />
     <MESSAGE value="Добавил к запросу вывод количество студентов" />
     <MESSAGE value="Добавил алиасы для корректной отправки на фронт" />
@@ -521,6 +520,7 @@
     <MESSAGE value="Изменил шаблон docx файла" />
     <MESSAGE value="Добавил отправку id заявки в ответе" />
     <MESSAGE value="Доработал функцию загрузки документа на клиент" />
-    <option name="LAST_COMMIT_MESSAGE" value="Доработал функцию загрузки документа на клиент" />
+    <MESSAGE value="Добавил группировку в getDiscipline для избавления от дублированиия предметов" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил группировку в getDiscipline для избавления от дублированиия предметов" />
   </component>
 </project>
