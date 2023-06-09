@@ -1,24 +1,27 @@
 const { proxy_main } = require('../config/axios.config');
 
 module.exports.generateDocument = async function (req, res) {
+    const { order_id } = req.query;
     try {
-        const { data } = req.body;
-
-        // Отправляем данные на конечный сервер для генерации документа
-        const response = await proxy_main.post('/api/document/download', { data });
+        // Отправляем запрос на конечный сервер для генерации документа
+        const response = await proxy_main.get(`/api/document/download?order_id=${order_id}`, {
+            responseType: 'arraybuffer', // Указываем, что ожидаем массив байтов в ответе
+        });
 
         // Проверяем статус ответа
         if (response.status === 200) {
-            // Если генерация прошла успешно, получаем сгенерированный документ
+            // Если генерация прошла успешно, получаем сгенерированный документ в виде массива байтов
             const generatedDoc = response.data;
 
-            // Отправляем сгенерированный документ клиенту
+            // Устанавливаем заголовки для отправки файла клиенту
             res.set({
                 'Content-Type': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-                'Content-Disposition': 'attachment; filename="document.docx"',
+                'Content-Disposition': 'attachment; filename="order.docx"',
                 'Content-Length': generatedDoc.length,
             });
-            res.send(generatedDoc);
+
+            // Отправляем сгенерированный документ клиенту
+            res.send(Buffer.from(generatedDoc, 'binary'));
         } else {
             // Если произошла ошибка при генерации на конечном сервере
             res.status(500).json({
@@ -31,7 +34,8 @@ module.exports.generateDocument = async function (req, res) {
             message: 'Произошла ошибка',
         });
     }
-}
+};
+
 
 const axios = require('axios');
 
