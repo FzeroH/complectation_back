@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Привёл в работоспособное состояние создание заказа">
+    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Изменил шаблон docx файла">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_service/controllers/documentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/documentController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/doc_templates/template_tab.docx" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/doc_templates/template_tab.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/routes/document.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/routes/document.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/requestController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proxy_service/controllers/documentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/documentController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proxy_service/routes/document.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/routes/document.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/controllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/requestController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,21 +133,7 @@
       <workItem from="1685479686301" duration="58000" />
       <workItem from="1685556314152" duration="4731000" />
       <workItem from="1685636375122" duration="8802000" />
-      <workItem from="1686293112641" duration="18047000" />
-    </task>
-    <task id="LOCAL-00042" summary="Удалил лишний файл">
-      <created>1683805122051</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1683805122051</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Добавил необходимые проверки корректности данных">
-      <created>1683904446579</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1683904446579</updated>
+      <workItem from="1686293112641" duration="20274000" />
     </task>
     <task id="LOCAL-00044" summary="отключил проверку токена">
       <created>1683904483863</created>
@@ -479,7 +464,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686314322012</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="Изменил http запрос">
+      <created>1686318088761</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1686318088762</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Изменил шаблон docx файла">
+      <created>1686318108464</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1686318108465</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -500,8 +499,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил функции создания заказа, получения списка заявок (всего и по id пользователя), фильтрации заявок по издательствам" />
-    <MESSAGE value="Изменил вывод поля с id роли на название" />
     <MESSAGE value="Добавил алиасы для корректного отображения на фронте" />
     <MESSAGE value="Сделал выполнение запроса к базе внутри транзакции" />
     <MESSAGE value="Подправил роут" />
@@ -525,6 +522,8 @@
     <MESSAGE value="Добавил фильтрацию списка заявок у комплектовщика по издательствам" />
     <MESSAGE value="Отредактировал шаблон документа" />
     <MESSAGE value="Привёл в работоспособное состояние создание заказа" />
-    <option name="LAST_COMMIT_MESSAGE" value="Привёл в работоспособное состояние создание заказа" />
+    <MESSAGE value="Изменил http запрос" />
+    <MESSAGE value="Изменил шаблон docx файла" />
+    <option name="LAST_COMMIT_MESSAGE" value="Изменил шаблон docx файла" />
   </component>
 </project>

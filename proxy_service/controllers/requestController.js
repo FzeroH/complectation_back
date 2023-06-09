@@ -42,7 +42,7 @@ module.exports.createOrder = async function (req, res) {
         console.log(data);
         const response = await proxy_main.post('/api/create_order', data);
         res.status(201).json({
-            message: 'Успешно'
+            finaly_request_id: response.data.finaly_request_id
         });
     } catch (error) {
         console.error(error);

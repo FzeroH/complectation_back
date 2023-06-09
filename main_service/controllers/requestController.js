@@ -138,6 +138,7 @@ module.exports.getRequestsByUserId = async function(req,res) {
 
 module.exports.createOrder = async function (req,res){
     const { users_id, order_ids, total_price } = req.body
+    let id = 0;
     try {
         const date = new Date()
         const formattedDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}`
@@ -153,9 +154,11 @@ module.exports.createOrder = async function (req,res){
                 UPDATE publication_request SET finaly_request_id = $2, request_status_id = 5 WHERE request_id = $1`,
                     [request_id, finaly_request_id]);
             }
+            id = finaly_request_id;
         });
         res.status(200).json({
             message:"Успешно",
+            finaly_request_id: id,
         });
     } catch (e) {
         console.error(e)
