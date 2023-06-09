@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Добавил фильтрацию списка заявок у комплектовщика по издательствам">
+    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Привёл в работоспособное состояние создание заказа">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_service/controllers/documentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/documentController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_service/controllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/requestController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_service/doc_templates/template_tab.docx" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/doc_templates/template_tab.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/routes/document.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/routes/document.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proxy_service/controllers/documentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/documentController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proxy_service/controllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/controllers/requestController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_service/routes/document.js" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/routes/document.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,38 +39,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.16.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.16.0&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sauru/Desktop/ВКР/ИС Комплектация/complectation_back/main_service/doc_templates&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;E:\\IntelliJ IDEA 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "javascript.nodejs.core.library.configured.version": "18.16.0",
+    "javascript.nodejs.core.library.typings.version": "18.16.0",
+    "last_opened_file_path": "C:/Users/sauru/Desktop/complectation_back/main_service/doc_templates",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "E:\\IntelliJ IDEA 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sauru\Desktop\complectation_back\main_service\doc_templates" />
       <recent name="C:\Users\sauru\Desktop\ВКР\ИС Комплектация\complectation_back\main_service\doc_templates" />
       <recent name="$PROJECT_DIR$/admin_service" />
       <recent name="$PROJECT_DIR$/parser_service" />
@@ -133,21 +134,7 @@
       <workItem from="1685479686301" duration="58000" />
       <workItem from="1685556314152" duration="4731000" />
       <workItem from="1685636375122" duration="8802000" />
-      <workItem from="1686293112641" duration="14344000" />
-    </task>
-    <task id="LOCAL-00040" summary="Добавил проверку роли пользователя">
-      <created>1683656638609</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1683656638609</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Соединил сервисы авторизации и администрирования в один">
-      <created>1683805018785</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1683805018785</updated>
+      <workItem from="1686293112641" duration="18047000" />
     </task>
     <task id="LOCAL-00042" summary="Удалил лишний файл">
       <created>1683805122051</created>
@@ -478,7 +465,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686295744577</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="Отредактировал шаблон документа">
+      <created>1686314267652</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1686314267652</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Привёл в работоспособное состояние создание заказа">
+      <created>1686314322012</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1686314322012</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -499,8 +500,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил фильтр публикаций по году" />
-    <MESSAGE value="Добавил endpoint фильтра публикаций по году" />
     <MESSAGE value="Добавил функции создания заказа, получения списка заявок (всего и по id пользователя), фильтрации заявок по издательствам" />
     <MESSAGE value="Изменил вывод поля с id роли на название" />
     <MESSAGE value="Добавил алиасы для корректного отображения на фронте" />
@@ -524,6 +523,8 @@
     <MESSAGE value="Добавил в запрос сортировку по id от меньшего к большему" />
     <MESSAGE value="убрал лишний код" />
     <MESSAGE value="Добавил фильтрацию списка заявок у комплектовщика по издательствам" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил фильтрацию списка заявок у комплектовщика по издательствам" />
+    <MESSAGE value="Отредактировал шаблон документа" />
+    <MESSAGE value="Привёл в работоспособное состояние создание заказа" />
+    <option name="LAST_COMMIT_MESSAGE" value="Привёл в работоспособное состояние создание заказа" />
   </component>
 </project>
