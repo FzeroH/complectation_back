@@ -12,11 +12,16 @@ const session = require('express-session')
 const SqliteStore = require('better-sqlite3-session-store')(session)
 const db = new sqlite('session.db', {verbose: console.log})
 
+const multer = require('multer');
+
+const upload = multer()
+
 const app = express();
 // const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
 
 // app.use(morgan('combined', { stream: accessLogStream }));
 app.use(morgan('dev'))
+app.use(upload.single('file'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
