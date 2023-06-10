@@ -61,10 +61,19 @@ from db_connect import connect
 
 app = FastAPI()
 
+
 @app.post("/api/file/upload")
 async def create_upload_file(
         file: UploadFile = File(...),
-        publisher: str = Form(...)):
+        company_name: int = Form(...)):
+    curs = connect.cursor()
+    select_query = "SELECT company_name FROM company WHERE company_id = %s"
+    curs.execute(select_query, (company_name,))
+    result = curs.fetchone()
+    print(result)
+    if result:
+        publisher = result[0]
+        print(publisher)
     if not file.filename.lower().endswith(('.xls', '.xlsx')):
         return JSONResponse(content={"error": "Неверный формат файла."}, status_code=400)
 
@@ -80,7 +89,7 @@ async def create_upload_file(
     except:
         return JSONResponse(content={"error": "Недопустимый файл."}, status_code=400)
 
-    t = parser(publisher, file_path)
+    t = parser(filename=publisher, filepath=file_path, company_id=company_name)
 
     os.remove(file_path)
 

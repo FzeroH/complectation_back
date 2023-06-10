@@ -4,7 +4,7 @@ from db_connect import connect
 import re
 
 
-def parser(filename: str, filepath: str):
+def parser(filename: str, filepath: str, company_id: int):
     header_dict = {
         "Инфра-инженерия": 10,
         "ТНТ": 5,
@@ -75,8 +75,7 @@ def parser(filename: str, filepath: str):
                 if not data['publication_title']:
                     continue
 
-                values = (2, data['publication_author'], data['publication_title'], data['publication_year'], data['publication_cost'])
-                # TODO: Убрать захардкоженный номер издательства в запросе!!!!!
+                values = (company_id, data['publication_author'], data['publication_title'], data['publication_year'], data['publication_cost'])
                 curs.execute(insert_query, values)
     except Exception as e:
         connect.rollback()
