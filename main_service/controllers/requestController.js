@@ -53,7 +53,7 @@ module.exports.getRequests = async function(req,res) {
     const { value, status } = req.query
 
     const company = value? `where pub.company_id = ${value}` : ''
-    //const statusCondition = status ? `where request_status_name = '${status}'` : '';
+    const statusCondition = status ? `where request_status_name = '${status}'` : '';
 
     try {
         const result = await db.manyOrNone(
@@ -81,6 +81,7 @@ module.exports.getRequests = async function(req,res) {
                       JOIN students_group AS sg ON sd.students_group_id = sg.students_group_id
                       JOIN students_group_type AS sgt ON sg.students_group_type_id = sgt.students_group_type_id
                  ${company}
+                 ${statusCondition}
              GROUP BY pr.request_id, request_status_name, cafedra_name,
                  publication_author, publication_title, company_name, publication_year, pub_type_name,
                  request_count, publication_cost, sg.students_group_name
@@ -142,7 +143,7 @@ module.exports.createOrder = async function (req,res){
     let id = 0;
     try {
         const date = new Date()
-        const formattedDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}`
+        const formattedDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
         await db.tx( async (transaction) => {
             const { finaly_request_id } = await transaction.one(
                 `INSERT INTO finaly_request(users_id, finaly_request_date, finaly_cost)

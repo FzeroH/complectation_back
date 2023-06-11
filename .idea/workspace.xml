@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Добавил получение истории заявок">
+    <list default="true" id="f5ca8849-eaaf-411d-829e-0101c54483d3" name="Changes" comment="Добавил настройки корс">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser_service/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser_service/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_service/controllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/main_service/controllers/requestController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proxy_service/session.db" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_service/session.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -137,14 +137,7 @@
       <workItem from="1686373980031" duration="577000" />
       <workItem from="1686374611483" duration="2736000" />
       <workItem from="1686386969241" duration="9656000" />
-      <workItem from="1686467940918" duration="12726000" />
-    </task>
-    <task id="LOCAL-00054" summary="Отрефакторил getPublications">
-      <created>1685193967230</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1685193967230</updated>
+      <workItem from="1686467940918" duration="15558000" />
     </task>
     <task id="LOCAL-00055" summary="Добавил credentials в cors">
       <created>1685194024678</created>
@@ -482,7 +475,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686480348984</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="Добавил настройки корс">
+      <created>1686485040418</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1686485040418</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -503,7 +503,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="убрал отдельно функцию сортировки по году публикации" />
     <MESSAGE value="Убрал закомментированную функцию" />
     <MESSAGE value="Изменил названия эндпоинтов" />
     <MESSAGE value="Изменил названия переменных" />
@@ -528,9 +527,10 @@
     <MESSAGE value="Подключил multer middleware" />
     <MESSAGE value="Убрал комментарии" />
     <MESSAGE value="Добавил получение истории заявок" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил получение истории заявок" />
+    <MESSAGE value="Добавил настройки корс" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил настройки корс" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/complectation_back$parser_service.coverage" NAME="parser_service Coverage Results" MODIFIED="1686480366775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/complectation_back$parser_service.coverage" NAME="parser_service Coverage Results" MODIFIED="1686485044874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
