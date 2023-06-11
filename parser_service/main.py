@@ -54,13 +54,26 @@
 import os
 from fastapi import FastAPI, File, UploadFile, Form, HTTPException
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
+
 import pandas as pd
 
 from parser import parser
 from db_connect import connect
 
 app = FastAPI()
+origins = [
+    "http://localhost:5173",
+    "https://localhost:5173",
+]
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["POST"],
+    allow_headers=["*"],
+)
 
 @app.post("/api/file/upload")
 async def create_upload_file(
@@ -87,7 +100,7 @@ async def create_upload_file(
     try:
         pd.read_excel(file_path)
     except:
-        return JSONResponse(content={"error": "Недопустимый файл."}, status_code=400)
+        return JSONResponse(content={"error": "Недопустимый файл."}, status_code=500)
 
     t = parser(filename=publisher, filepath=file_path, company_id=company_name)
 
