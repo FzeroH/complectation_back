@@ -53,7 +53,7 @@ module.exports.getRequests = async function(req,res) {
     const { value, status } = req.query
 
     const company = value? `where pub.company_id = ${value}` : ''
-    const statusCondition = status ? `where request_status_name = '${status}'` : '';
+    //const statusCondition = status ? `where request_status_name = '${status}'` : '';
 
     try {
         const result = await db.manyOrNone(
@@ -81,7 +81,6 @@ module.exports.getRequests = async function(req,res) {
                       JOIN students_group AS sg ON sd.students_group_id = sg.students_group_id
                       JOIN students_group_type AS sgt ON sg.students_group_type_id = sgt.students_group_type_id
                  ${company}
-                 ${statusCondition}
              GROUP BY pr.request_id, request_status_name, cafedra_name,
                  publication_author, publication_title, company_name, publication_year, pub_type_name,
                  request_count, publication_cost, sg.students_group_name
@@ -169,3 +168,53 @@ module.exports.createOrder = async function (req,res){
         });
     }
 }
+
+module.exports.getOrders = async function(req,res) {
+    const { value, id } = req.query
+
+    const company = value? `where pb.company_id = ${value}` : ''
+    let ordersId = ''
+    if (company) {
+        ordersId = id? `and pr.finaly_request_id = ${id}` : ''
+    } else {
+        ordersId = id? `where pr.finaly_request_id = ${id}` : ''
+    }
+
+    try {
+        const result = await db.manyOrNone(
+            `SELECT DISTINCT pr.request_id as id, pr.finaly_request_id, publication_title, publication_author, publication_year,
+                   request_status_name as status, cp.company_name, request_count, finaly_request_date as date, 
+                    finaly_cost as total_cost, cafedra_name
+             FROM publication_request as pr
+                 JOIN request_status as rs ON pr.request_status_id = rs.request_status_id
+                 JOIN publication as pb ON pr.publication_id = pb.publication_id
+                 JOIN finaly_request as fr ON pr.finaly_request_id = fr.finaly_request_id
+                 JOIN company as cp ON pb.company_id = cp.company_id
+                 JOIN users AS us ON pr.users_id = us.users_id
+                 JOIN pub_req_students_discipline AS prsd ON prsd.request_id = pr.request_id
+                 JOIN students_discipline AS sd ON prsd.students_discipline_id = sd.students_discipline_id
+                 JOIN discipline AS ds ON sd.discipline_id = ds.discipline_id
+                 JOIN cafedra AS cf ON ds.cafedra_id = cf.cafedra_id
+             ${company}
+             ${ordersId}
+             ORDER BY finaly_request_date DESC;`)
+        res.status(200).json(result)
+    } catch (e) {
+        console.error(e)
+        res.status(500).json({
+            message: "Произошла ошибка"
+        })
+    }
+}
+
+module.exports.getOrdersDate = async function (req, res){
+    try {
+        const result = await db.many(`SELECT finaly_request_id as value, finaly_request_date as title FROM finaly_request order by finaly_request_id asc`)
+        return res.status(200).json(result)
+    } catch (e) {
+        console.error(e)
+        res.status(500).json({
+            message: "Произошла ошибка"
+        })
+    }
+};

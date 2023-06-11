@@ -12,4 +12,8 @@ router.get('/all_requests', controller.getRequests);
 
 router.get('/requests', controller.getRequestsByUserId);
 
+router.get('/orders', controller.getOrders);
+
+router.get('/orders_date', controller.getOrdersDate);
+
 module.exports = router

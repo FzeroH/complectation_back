@@ -56,7 +56,6 @@ module.exports.getRequests = async function (req, res) {
     const { value: val, status: stat } = req.query;
     const value = val || '';
     const status = stat || '';
-    console.log(status);
 
     try {
         const response = await proxy_main.get(`/api/all_requests?value=${value}&status=${status}`);
@@ -76,6 +75,34 @@ module.exports.getRequestsByUserId = async function (req, res) {
         const response = await proxy_main.get(`/api/requests?id=${userId}`);
         const requests = response.data;
         res.status(200).json(requests);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Произошла ошибка',
+        });
+    }
+}
+
+module.exports.getOrders = async function (req, res) {
+    const { value: val, id:ordersId } = req.query;
+    const value = val || '';
+    const id = ordersId || '';
+    try {
+        const response = await proxy_main.get(`/api/orders?value=${value}&id=${id}`);
+        const requests = response.data;
+        res.status(200).json(requests);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Произошла ошибка',
+        });
+    }
+}
+
+module.exports.getOrdersDate = async function (req, res) {
+    try {
+        const result = await proxy_main.get('/api/orders_date');
+        res.status(200).json(result.data);
     } catch (error) {
         console.error(error);
         res.status(500).json({
